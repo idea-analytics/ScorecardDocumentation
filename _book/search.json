@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "IDEA Growth Scorecard Documentation",
     "section": "",
-    "text": "Introduction / Index",
+    "text": "Introduction / Index\nTESTING TESTING 123",
     "crumbs": [
       "Introduction / Index"
     ]
@@ -24,7 +24,7 @@
     "href": "index.html#structure",
     "title": "IDEA Growth Scorecard Documentation",
     "section": "Structure",
-    "text": "Structure\nEach chapter of this resource will contain information about a related section of metrics:\n\n1  School Performance Data\n\nAccountability Ratings\nMeets STAAR Performance Standards for Math and ELA\nMulti-Year Failure\n\n2  Financial Viability\n\nDays Cash on Hand\nDebt Service Coverage Ratio\nPercent of per pupil revenue going to regional office budget\n\n3  Capital Capacity\n\nPercentage Debt Coverage Across Entity\n\n4  Teacher Supply\n\nPercent of Teaching Positions Hired by First Day of Instruction\nYear Over Year Teacher Retention\n\n5  Leadership and Headquarters Bandwidth\n\nPercentage of Leaders 3+ years in role\nAPI vacancy rate (expected + new)\nNumber of CAP grads (2-year)\n\n6  Enrollment Readiness / Student Demand\n\nPercentage Meeting Enrollment Goal\nPercentage Student Annual Persistence\nPercentage of Schools/Campuses Under 85% Capacity (Model 1501)",
+    "text": "Structure\nEach chapter of this resource will contain information about a related section of metrics:\n\n?sec-Performance\n\n?sec-Account\n?sec-STAAR\n?sec-Fail\n\n?sec-Finance\n\n?sec-DaysCash\n?sec-DebtRatio\n?sec-PerPupil\n\n?sec-Capital\n\n?sec-DebtCov\n\n?sec-TeacherSupply\n\n?sec-TeachHire\n?sec-YOYTeach\n\n?sec-05HQBand\n\n?sec-05Leaders\n?sec-05APIVacancy\n?sec-05CAPGrads\n\n?sec-06Enroll\n\n?sec-06Goal\n?sec-06Persist\n?sec-06Cap",
     "crumbs": [
       "Introduction / Index"
     ]
