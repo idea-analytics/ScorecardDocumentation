@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -265,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="source-2" class="level3" data-number="6.3.2">
 <h3 data-number="6.3.2" class="anchored" data-anchor-id="source-2"><span class="header-section-number">6.3.2</span> Source</h3>
-<p>The STAAR data includes STAAR and high school level End-of-Course (EOC) assessments stored in IDEA’s data warehouse<span class="citation" data-cites="STAAR">(<a href="references.html#ref-STAAR" role="doc-biblioref"><strong>STAAR?</strong></a>)</span>.</p>
+<p>The STAAR data includes STAAR and high school level End-of-Course (EOC) assessments stored in IDEA’s data warehouse<span class="citation" data-cites="STAAR">(<a href="references.html#ref-STAAR" role="doc-biblioref">IDEA Public Schools Data Warehouse 2025</a>)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>STAAR <span class="ot">&lt;-</span> <span class="fu">get_table</span>(<span class="at">.table_name =</span> <span class="st">"STAAR"</span>, <span class="at">.database_name =</span> <span class="st">"Dashboard"</span>,</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">.schema =</span> <span class="st">"dbo"</span>, <span class="at">.server_name =</span> <span class="st">"RGVPDRA-DASQL"</span>) <span class="sc">%&gt;%</span></span>
@@ -287,6 +307,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-STAAR" class="csl-entry" role="listitem">
+IDEA Public Schools Data Warehouse. 2025. <span>“STAAR Assessment Data.”</span>
+</div>
+</div>
 </section>
 </section>
 

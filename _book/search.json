@@ -154,7 +154,7 @@
     "href": "05-Leadership.html#sec-05CAPGrads",
     "title": "5  Leadership and Headquarters Bandwidth",
     "section": "5.3 Number of CAP grads (2-year)",
-    "text": "5.3 Number of CAP grads (2-year)\n\n5.3.1 Notes & Exclusions\n\n\n5.3.2 Source\nThe STAAR data includes STAAR and high school level End-of-Course (EOC) assessments stored in IDEA’s data warehouse(STAAR?).\n\nSTAAR &lt;- get_table(.table_name = \"STAAR\", .database_name = \"Dashboard\",\n                   .schema = \"dbo\", .server_name = \"RGVPDRA-DASQL\") %&gt;%\n  filter(\n    ## Includes STAAR but not STAAR Alt 2 \n      TestVersion == \"S\", \n    ## Includes Scored assessments only\n      ScoreCode == \"S\", \n    ## Includes Math and English \n    (SubjectCode == \"Math\" |\n     SubjectCode == \"Reading\" |\n     SubjectCode == \"Algebra I\" |\n     SubjectCode == \"English I\" |\n     SubjectCode == \"English II\"),\n    ## Select desired school years\n    (SchoolYear == \"2024-2025\" |\n     SchoolYear == \"2023-2024\")\n  )",
+    "text": "5.3 Number of CAP grads (2-year)\n\n5.3.1 Notes & Exclusions\n\n\n5.3.2 Source\nThe STAAR data includes STAAR and high school level End-of-Course (EOC) assessments stored in IDEA’s data warehouse(IDEA Public Schools Data Warehouse 2025).\n\nSTAAR &lt;- get_table(.table_name = \"STAAR\", .database_name = \"Dashboard\",\n                   .schema = \"dbo\", .server_name = \"RGVPDRA-DASQL\") %&gt;%\n  filter(\n    ## Includes STAAR but not STAAR Alt 2 \n      TestVersion == \"S\", \n    ## Includes Scored assessments only\n      ScoreCode == \"S\", \n    ## Includes Math and English \n    (SubjectCode == \"Math\" |\n     SubjectCode == \"Reading\" |\n     SubjectCode == \"Algebra I\" |\n     SubjectCode == \"English I\" |\n     SubjectCode == \"English II\"),\n    ## Select desired school years\n    (SchoolYear == \"2024-2025\" |\n     SchoolYear == \"2023-2024\")\n  )\n\n\n\n\n\nIDEA Public Schools Data Warehouse. 2025. “STAAR Assessment Data.”",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Leadership and Headquarters Bandwidth</span>"
     ]
@@ -194,9 +194,19 @@
     "href": "06-Enrollment.html#sec-06Cap",
     "title": "6  Enrollment Readiness / Student Demand",
     "section": "6.3 Percentage of Schools/Campuses Under 85% Capacity (Model 1501)",
-    "text": "6.3 Percentage of Schools/Campuses Under 85% Capacity (Model 1501)\n\n6.3.1 Notes & Exclusions\n\n\n6.3.2 Source\nThe STAAR data includes STAAR and high school level End-of-Course (EOC) assessments stored in IDEA’s data warehouse(STAAR?).\n\nSTAAR &lt;- get_table(.table_name = \"STAAR\", .database_name = \"Dashboard\",\n                   .schema = \"dbo\", .server_name = \"RGVPDRA-DASQL\") %&gt;%\n  filter(\n    ## Includes STAAR but not STAAR Alt 2 \n      TestVersion == \"S\", \n    ## Includes Scored assessments only\n      ScoreCode == \"S\", \n    ## Includes Math and English \n    (SubjectCode == \"Math\" |\n     SubjectCode == \"Reading\" |\n     SubjectCode == \"Algebra I\" |\n     SubjectCode == \"English I\" |\n     SubjectCode == \"English II\"),\n    ## Select desired school years\n    (SchoolYear == \"2024-2025\" |\n     SchoolYear == \"2023-2024\")\n  )",
+    "text": "6.3 Percentage of Schools/Campuses Under 85% Capacity (Model 1501)\n\n6.3.1 Notes & Exclusions\n\n\n6.3.2 Source\nThe STAAR data includes STAAR and high school level End-of-Course (EOC) assessments stored in IDEA’s data warehouse(IDEA Public Schools Data Warehouse 2025).\n\nSTAAR &lt;- get_table(.table_name = \"STAAR\", .database_name = \"Dashboard\",\n                   .schema = \"dbo\", .server_name = \"RGVPDRA-DASQL\") %&gt;%\n  filter(\n    ## Includes STAAR but not STAAR Alt 2 \n      TestVersion == \"S\", \n    ## Includes Scored assessments only\n      ScoreCode == \"S\", \n    ## Includes Math and English \n    (SubjectCode == \"Math\" |\n     SubjectCode == \"Reading\" |\n     SubjectCode == \"Algebra I\" |\n     SubjectCode == \"English I\" |\n     SubjectCode == \"English II\"),\n    ## Select desired school years\n    (SchoolYear == \"2024-2025\" |\n     SchoolYear == \"2023-2024\")\n  )\n\n\n\n\n\nIDEA Public Schools Data Warehouse. 2025. “STAAR Assessment Data.”",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Enrollment Readiness / Student Demand</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "IDEA Public Schools Data Warehouse. 2025. “STAAR Assessment\nData.”\n\n\nIDEA RAP Team. n.d. IDEA r&a Manual. https://idea-analytics.github.io/r_and_a_manual/index.html.\n\n\nTexas Education Agency. 2018. “2018 Accountability Ratings: 2019\nData Download.” https://rptsvr1.tea.texas.gov/perfreport/account/2018/download.html.\n\n\n———. 2019. “2019 Accountability Ratings: 2019 Data\nDownload.” https://rptsvr1.tea.texas.gov/perfreport/account/2019/download.html.\n\n\n———. 2022. “2022 Accountability Ratings: 2022 Data\nDownload.” https://rptsvr1.tea.texas.gov/perfreport/account/2022/download.html.\n\n\n———. 2023. “2023 Accountability Ratings: 2023 Data\nDownload.” https://rptsvr1.tea.texas.gov/perfreport/account/acct_download?year=2023.\n\n\n———. 2024. “2024 Accountability Ratings: 2024 Data\nDownload.” https://rptsvr1.tea.texas.gov/perfreport/account/acct_download?year=2024.\n\n\n———. 2025a. “2025 Accountability Ratings: 2025 Data\nDownload.” https://rptsvr1.tea.texas.gov/perfreport/account/acct_download?year=2025.\n\n\n———. 2025b. Accountability Manual for 2025 Ratings for Texas Public\nSchool Districts and Campuses. https://tea.texas.gov/texas-schools/accountability/academic-accountability/performance-reporting/2025-accountability-manual-full.pdf.",
+    "crumbs": [
+      "References"
     ]
   }
 ]
