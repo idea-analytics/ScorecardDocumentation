@@ -1,5 +1,7 @@
 # Introduction / Index {.unnumbered}
 
+Testing testing
+
 ## Purpose
 
 The Growth Scorecards were designed for use by IDEA's Growth team to provide relevant data and insights to guide strategic decision making as IDEA Texas considers expansion, consolidation, and/or closure of schools and regions. Currently, the Growth Scorecards include only data from IDEA's Texas regions.
