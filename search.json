@@ -204,7 +204,7 @@
     "href": "06-Enrollment.html",
     "title": "6  Enrollment Readiness / Student Demand",
     "section": "",
-    "text": "6.1 Percentage Meeting Enrollment Goal",
+    "text": "6.1 Percentage Meeting Enrollment Goal\nImportant to note the difference between enrollment goals and capacity!\nEach year, each IDEA school has an assigned enrollment target or goal for each grade level they enroll, set by the Enrollment and School Launch Team. [Add information about who sets these and how].\nFor this metric, a unit (grade level, school, campus, or region) is considered to have met their enrollment goal if the total number of students enrolled on the First Day Of Persistence (FDOP) is at or above the total enrollment goal for that unit.\n\\[{\\text{Percentage Meeting Enrollment Goal}} = \\frac{\\text{Number of Students Enrolled at Unit at FDOP}}{\\text{Total Enrollment Goal for Unit}}\\]\nIf one school is under-enrolled but another is over-enrolled, a full campus may still meet its overall enrollment goal. For example, at FDOP 2025, enrollment at Austin Health Professions Academy was 13 students below its target (not meeting enrollment goal), but Austin Health Professions College Prep was 46 above its target (meeting enrollment goal). Therefore, the full Austin Health Professions campus was 33 students above its target and considered to be meeting its enrollment goal.",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Enrollment Readiness / Student Demand</span>"
     ]
@@ -214,7 +214,7 @@
     "href": "06-Enrollment.html#sec-06Goal",
     "title": "6  Enrollment Readiness / Student Demand",
     "section": "",
-    "text": "6.1.1 Notes & Exclusions\n\n\n6.1.2 Source",
+    "text": "Unit\nSchool Enrollment at FDOP\nSchool- Target Enrollment\nMeets Goal?\n\n\n\n\nHealth Professions Academy\n335\n348\nNo\n\n\nHealth Professions College Prep\n434\n388\nYes\n\n\nHealth Professions Campus Total\n769\n736\nYes\n\n\n\n\n6.1.1 Notes & Exclusions\n\n\n6.1.2 Source",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Enrollment Readiness / Student Demand</span>"
     ]

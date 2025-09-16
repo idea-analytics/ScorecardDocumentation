@@ -125,6 +125,35 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -260,8 +289,49 @@ div.csl-indent {
 </header>
 
 
+<p>Important to note the difference between enrollment goals and capacity!</p>
 <section id="sec-06Goal" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="sec-06Goal"><span class="header-section-number">6.1</span> Percentage Meeting Enrollment Goal</h2>
+<p>Each year, each IDEA school has an assigned enrollment target or goal for each grade level they enroll, set by the Enrollment and School Launch Team. [Add information about who sets these and how].</p>
+<p>For this metric, a unit (grade level, school, campus, or region) is considered to have met their enrollment goal if the total number of students enrolled on the First Day Of Persistence (FDOP) is at or above the total enrollment goal for that unit.</p>
+<p><span class="math display">\[{\text{Percentage Meeting Enrollment Goal}} = \frac{\text{Number of Students Enrolled at Unit at FDOP}}{\text{Total Enrollment Goal for Unit}}\]</span></p>
+<p>If one school is under-enrolled but another is over-enrolled, a full campus may still meet its overall enrollment goal. For example, at FDOP 2025, enrollment at Austin Health Professions Academy was 13 students below its target (not meeting enrollment goal), but Austin Health Professions College Prep was 46 above its target (meeting enrollment goal). Therefore, the full Austin Health Professions campus was 33 students above its target and considered to be meeting its enrollment goal.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Unit</th>
+<th style="text-align: center;">School Enrollment at FDOP</th>
+<th style="text-align: center;">School- Target Enrollment</th>
+<th style="text-align: center;">Meets Goal?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Health Professions Academy</td>
+<td style="text-align: center;">335</td>
+<td style="text-align: center;">348</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Health Professions College Prep</td>
+<td style="text-align: center;">434</td>
+<td style="text-align: center;">388</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Health Professions Campus Total</strong></td>
+<td style="text-align: center;"><strong>769</strong></td>
+<td style="text-align: center;"><strong>736</strong></td>
+<td style="text-align: center;"><strong>Yes</strong></td>
+</tr>
+</tbody>
+</table>
 <section id="notes-exclusions" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="notes-exclusions"><span class="header-section-number">6.1.1</span> Notes &amp; Exclusions</h3>
 </section>
