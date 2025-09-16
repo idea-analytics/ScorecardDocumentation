@@ -1,3 +1,9 @@
 # Capital Capacity {#sec-Capital}
 
 ## Percentage Debt Coverage Across Entity {#sec-DebtCov}
+
+To be filled in...
+
+### Source
+
+In Fall 2025, we recieved this metric as an estimate directly from Michael Needham.

@@ -4,7 +4,7 @@
 
 The State of Texas Assessments of Academic Readiness (STAAR) assessments are Texas' annual standardized tests. For the Growth Scorecards, we are using results of all math and English Language Arts (ELA) standard assessments including the STAAR assessments of Reading and Math conducted in grades 3-8 and End-of-Course (EOC) assessments of Algebra I, English I, and English II.
 
-"All STAAR assessments, excluding STAAR Alt 2, have three performance standards: Approaches, Meets, and Masters \[...\] These three performance levels are NOT mutually exclusive, meaning that students that achieve the Masters standard are included in the Meets count and the Approaches count, and students achieving the Meets standard are included in the Approaches count." [@RAPMan]
+> "All STAAR assessments, excluding STAAR Alt 2, have three performance standards: Approaches, Meets, and Masters \[...\] These three performance levels are NOT mutually exclusive, meaning that students that achieve the Masters standard are included in the Meets count and the Approaches count, and students achieving the Meets standard are included in the Approaches count." [@RAPMan]
 
 Percentage of students Meeting performance standards for Math and ELA are calculated at the entity, region, and campus level as:
 
@@ -59,11 +59,15 @@ Each district and campus receives an A-F letter grade for each of the three doma
 
 ### Percentage of Schools Rated A & B and D & F
 
-For the percentage of schools with specific letter grade accountability ratings, each individual school (Academy, College Prep) has its own rating. The metrics are calculated as follows: $${\text{Percent of Schools Rated A or B}} = \frac{(\text{Number of Schools Rated A}) + (\text{Number of Schools Rated B})}{\text{Total Number of Schools with Rating in Region}}$$ $${\text{Percent of Schools Rated D or F}} = \frac{(\text{Number of Schools Rated D}) + (\text{Number of Schools Rated F})}{\text{Total Number of Schools with Rating in Region}}$$
+For the percentage of schools with specific letter grade accountability ratings, each individual school (Academy, College Prep) has its own rating. The metrics are calculated at the entity and region level as follows: $${\text{Percent of Schools Rated A or B}} = \frac{(\text{Number of Schools Rated A}) + (\text{Number of Schools Rated B})}{\text{Total Number of Schools with Rating in Region}}$$ $${\text{Percent of Schools Rated D or F}} = \frac{(\text{Number of Schools Rated D}) + (\text{Number of Schools Rated F})}{\text{Total Number of Schools with Rating in Region}}$$
 
 ### Multi-Year Failure {#sec-Fail}
 
 For the multi-year failure metric, we considered schools with an overall rating \<70 to be "failing" and any schools with a failing rating for two subsequent rated years to have experienced a multi-year failure. To be counted as being in multi-year failure for the 2024-2025 school year, a school must have an overall rating score of \<70 in the 2024-2025 school year and the 2023-2024 school year.
+
+We calculated the number and percentage of schools in each region multi-year filaure for the 2024-2025 year.
+
+$${\text{Percent of Schools with Multi-Year Failure}} = \frac{\text{Number of Schools with Multi-Year Failure}}{\text{Total Number of Schools with Rating in Region}}$$
 
 Individual schools are marked has having a previous had multi-year failure if the school had a rating \<70 for any two or more subsequently rated years prior to 2024-2025.
 

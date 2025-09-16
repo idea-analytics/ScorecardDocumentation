@@ -1,7 +1,21 @@
 # Financial Viability {#sec-Finance}
 
+## Source
+
+The financial viability data used for the scorecards are not readily available from the data warehouse. Rather, we receive this data, on request, from the Treasury team.
+
+According to Trevor Brooks,
+
+> "For now, the best way to get this information is to request the data from the Treasury leadership team (Trevor Brooks, Joseph Audino, and Michael Needham). The Business Office is currently developing our financial metrics in the PowerBI environment where it will become part of our monthly financial reporting process. Once the project moves to production, the metrics will be readily accessible following a monthly cadence."
+
 ## Days Cash on Hand {#sec-DaysCash}
+
+Days Cash on Hand refers to the number of days that IDEA Texas could continue if all funding ceased using unrestricted dollars. Through the year, the Days Cash on Hand includes currently liquid assets. However, in June, IDEA updates this metric to include the value of all available lines of credit. The values provided for the scorecard refer to the June end of year snap shot, including the lines of credit.
 
 ## Debt Service Coverage Ratio {#sec-DebtRatio}
 
+To be filled in...
+
 ## Percent of per pupil revenue going to regional office budget {#sec-PerPupil}
+
+To be filled in...

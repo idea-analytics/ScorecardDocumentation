@@ -2,9 +2,19 @@
 
 ## Percent of Teaching Positions Hired by First Day of Instruction {#sec-TeachHire}
 
-text!
+### Source
+
+### Notes & Exclusions
 
 ## Year Over Year Teacher Retention {#sec-YOYTeach}
+
+Year Over Year (YOY) teacher retention is intended to represent the percentage of teaching staff hired in one school year that returned to a teaching position at IDEA Public Schools for the next school year. Each year, IDEA's Human Assets team develops a comprehensive specifications for calculating staff retention, as detailed in their Standard Operating Procedures (SOP), stored on [here](https://ideapublicschoolsorg.sharepoint.com/HumanAssets/SitePages/Retention-Policy.aspx?xsdata=MDV8MDJ8fDE4Mzg3N2EzYmQzOTRkZTZiMjZmMDhkZGYyMTY0YjY5fDAyZjYxZWIwOGY3ODQ4Y2ZiZWVjNDAyOTZhYmRmODA2fDB8MHw2Mzg5MzI4OTk3MjQ4OTg5Mjd8VW5rbm93bnxWR1ZoYlhOVFpXTjFjbWwwZVZObGNuWnBZMlY4ZXlKRFFTSTZJbFJsWVcxelgwRlVVRk5sY25acFkyVmZVMUJQVEU5R0lpd2lWaUk2SWpBdU1DNHdNREF3SWl3aVVDSTZJbGRwYmpNeUlpd2lRVTRpT2lKUGRHaGxjaUlzSWxkVUlqb3hNWDA9fDF8TDJOb1lYUnpMekU1T2pFNE5XRTJPRGhtTFdGbE1EZ3ROR1UyWmkwNVl6UTFMVFEyWVRBNVpqTTBPRE16WVY4NVpXVXhNemM0TVMxbE9UTmhMVFE1TkRZdFlqWXpPUzB3TkdFNVpqWXpaVFl5WlRKQWRXNXhMbWRpYkM1emNHRmpaWE12YldWemMyRm5aWE12TVRjMU56WTVNekUzTWpJeE9RPT18ZGRiM2U0ZTBhZDVhNDg3MGIyNmYwOGRkZjIxNjRiNjl8NmYyNGFjY2NhMzVjNGM1Yjk5ZjhlZGFjNWEyYmFmZjk%3D&sdata=dkRPOHpQV0hKZi9EempsQVg1dDFucXpqOEI4TEtvWEJmWDZhanVQeTBIWT0%3D&ovuser=02f61eb0-8f78-48cf-beec-40296abdf806%2CHilary.Doe%40ideapublicschools.org&OR=Teams-HL&CT=1758050613920&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNTA4MTUwMDcxNyIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D) on The Hub.
+
+To my knowledge, most of these specifications are carried out when labeling each individual as a Leaver or not prior to the data being pushed to the Data Warehouse. For example, individuals who do not return because they retire are not counted as Leavers according to the SOP CITE. Individuals with an Exit Reason of "retried"
+
+### Source
+
+### Notes & Exclusions
 
 Staff Retention Definitions
 
