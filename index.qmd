@@ -1,0 +1,57 @@
+# Introduction / Index {.unnumbered}
+
+TESTING TESTING 123
+
+## Purpose
+
+The Growth Scorecards were designed for use by IDEA's Growth team to provide relevant data and insights to guide strategic decision making as IDEA Texas considers expansion, consolidation, and/or closure of schools and regions. Currently, the Growth Scorecards include only data from IDEA's Texas regions.
+
+Although our goal is to establish a single source of relevant data, such as school performance, enrollment, and financial characteristics, not all desired data can easily be pulled and cleaned within R without reaching out to partners within IDEA.
+
+The purpose of this resource is to document where each metric comes from, how it is defined, and how to reproduce calculations for future iterations.
+
+## Structure
+
+Each chapter of this resource will contain information about a related section of metrics:
+
+-   @sec-Performance
+
+    -   @sec-Account
+
+    -   @sec-STAAR
+
+    -   @sec-Fail
+
+-   @sec-Finance
+
+    -   @sec-DaysCash
+
+    -   @sec-DebtRatio
+
+    -   @sec-PerPupil
+
+-   @sec-Capital
+
+    -   @sec-DebtCov
+
+-   @sec-TeacherSupply
+
+    -   @sec-TeachHire
+
+    -   @sec-YOYTeach
+
+-   @sec-05HQBand
+
+    -   @sec-05Leaders
+
+    -   @sec-05APIVacancy
+
+    -   @sec-05CAPGrads
+
+-   @sec-06Enroll
+
+    -   @sec-06Goal
+
+    -   @sec-06Persist
+
+    -   @sec-06Cap

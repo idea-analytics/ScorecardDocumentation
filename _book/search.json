@@ -1,0 +1,212 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "IDEA Growth Scorecard Documentation",
+    "section": "",
+    "text": "Introduction / Index\nTESTING TESTING 123",
+    "crumbs": [
+      "Introduction / Index"
+    ]
+  },
+  {
+    "objectID": "index.html#purpose",
+    "href": "index.html#purpose",
+    "title": "IDEA Growth Scorecard Documentation",
+    "section": "Purpose",
+    "text": "Purpose\nThe Growth Scorecards were designed for use by IDEA’s Growth team to provide relevant data and insights to guide strategic decision making as IDEA Texas considers expansion, consolidation, and/or closure of schools and regions. Currently, the Growth Scorecards include only data from IDEA’s Texas regions.\nAlthough our goal is to establish a single source of relevant data, such as school performance, enrollment, and financial characteristics, not all desired data can easily be pulled and cleaned within R without reaching out to partners within IDEA.\nThe purpose of this resource is to document where each metric comes from, how it is defined, and how to reproduce calculations for future iterations.",
+    "crumbs": [
+      "Introduction / Index"
+    ]
+  },
+  {
+    "objectID": "index.html#structure",
+    "href": "index.html#structure",
+    "title": "IDEA Growth Scorecard Documentation",
+    "section": "Structure",
+    "text": "Structure\nEach chapter of this resource will contain information about a related section of metrics:\n\n?sec-Performance\n\n?sec-Account\n?sec-STAAR\n?sec-Fail\n\n?sec-Finance\n\n?sec-DaysCash\n?sec-DebtRatio\n?sec-PerPupil\n\n?sec-Capital\n\n?sec-DebtCov\n\n?sec-TeacherSupply\n\n?sec-TeachHire\n?sec-YOYTeach\n\n?sec-05HQBand\n\n?sec-05Leaders\n?sec-05APIVacancy\n?sec-05CAPGrads\n\n?sec-06Enroll\n\n?sec-06Goal\n?sec-06Persist\n?sec-06Cap",
+    "crumbs": [
+      "Introduction / Index"
+    ]
+  },
+  {
+    "objectID": "01-SchoolPerformance.html",
+    "href": "01-SchoolPerformance.html",
+    "title": "1  School Performance Data",
+    "section": "",
+    "text": "1.1 Meets STAAR Performance Standards for Math and ELA\nThe State of Texas Assessments of Academic Readiness (STAAR) assessments are Texas’ annual standardized tests. For the Growth Scorecards, we are using results of all math and English Language Arts (ELA) standard assessments including the STAAR assessments of Reading and Math conducted in grades 3-8 and End-of-Course (EOC) assessments of Algebra I, English I, and English II.\n“All STAAR assessments, excluding STAAR Alt 2, have three performance standards: Approaches, Meets, and Masters […] These three performance levels are NOT mutually exclusive, meaning that students that achieve the Masters standard are included in the Meets count and the Approaches count, and students achieving the Meets standard are included in the Approaches count.” (IDEA RAP Team, n.d.)\nPercentage of students Meeting performance standards for Math and ELA are calculated at the entity, region, and campus level as:\n\\[ \\text{Percent Meeting Standards} = \\frac{\\text{Number of Students Meeting in Subject}}{\\text{Number of Students with Scored STAAR/EOC for Subject}}\\]",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>School Performance Data</span>"
+    ]
+  },
+  {
+    "objectID": "01-SchoolPerformance.html#sec-STAAR",
+    "href": "01-SchoolPerformance.html#sec-STAAR",
+    "title": "1  School Performance Data",
+    "section": "",
+    "text": "1.1.1 Notes & Exclusions\n\nStudents may retake a STAAR assessment more than once within the same academic year. For students that had more than one score for the same assessment and academic year, we use the highest-scoring test. Meaning that if they scored in the “Approaches” range at one point and scored in the “Meets” range at another point, they are counted as “Meeting” the performance standards for that subject.\nThis metric does not include STAAR Alternate 2 tests, which are typically given to students with significant cognitive disabilities, and for which the typical three-level performance standards to not apply.\nThe data warehouse does not include any STAAR or EOC assessments for students above 5th grade at the Travis campus in Midland ISD (Travis Academy students are included).\n\nIDEA Travis is a unique partnership between Midland ISD and IDEA Public schools, where the data is technically owned by Midland ISD and shared with IDEA.\n\n\n\n\n1.1.2 Source\nThe STAAR data includes STAAR and high school level End-of-Course (EOC) assessments stored in IDEA’s data warehouse(IDEA Public Schools Data Warehouse 2025).\n\nSTAAR &lt;- get_table(.table_name = \"STAAR\", .database_name = \"Dashboard\",\n                   .schema = \"dbo\", .server_name = \"RGVPDRA-DASQL\") %&gt;%\n  filter(\n    ## Includes STAAR but not STAAR Alt 2 \n      TestVersion == \"S\", \n    ## Includes Scored assessments only\n      ScoreCode == \"S\", \n    ## Includes Math and English \n    (SubjectCode == \"Math\" |\n     SubjectCode == \"Reading\" |\n     SubjectCode == \"Algebra I\" |\n     SubjectCode == \"English I\" |\n     SubjectCode == \"English II\"),\n    ## Select desired school years\n    (SchoolYear == \"2024-2025\" |\n     SchoolYear == \"2023-2024\")\n  )",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>School Performance Data</span>"
+    ]
+  },
+  {
+    "objectID": "01-SchoolPerformance.html#sec-Account",
+    "href": "01-SchoolPerformance.html#sec-Account",
+    "title": "1  School Performance Data",
+    "section": "1.2 Accountability Ratings",
+    "text": "1.2 Accountability Ratings\nTexas Education Agency (TEA) uses the an accountability rating system to evaluate the academic performance of all Texas public districts, including public school districts and open-enrollment charter schools (Texas Education Agency 2025b). Annual ratings are based on three domains:\n\nStudent Achievement (STAAR, EOC, College, Career, and Military Readiness, graduation rates)\nSchool Progress (student academic growth, achievement relative to schools with similar economic disadvantage levels)\nClosing the Gaps (progress among students from specific groups, e.g. racial/ethnic groups, special education, Emergent Bilingual or English learner, etc.)\n\nEach district and campus receives an A-F letter grade for each of the three domains and one overall score with associated letter grade. For more information on how specific ratings are calculated by TEA, find the most recent Accountability Rating System manual (Texas Education Agency 2025b).\n\n1.2.1 Percentage of Schools Rated A & B and D & F\nFor the percentage of schools with specific letter grade accountability ratings, each individual school (Academy, College Prep) has its own rating. The metrics are calculated as follows: \\[{\\text{Percent of Schools Rated A or B}} = \\frac{(\\text{Number of Schools Rated A}) + (\\text{Number of Schools Rated B})}{\\text{Total Number of Schools with Rating in Region}}\\] \\[{\\text{Percent of Schools Rated D or F}} = \\frac{(\\text{Number of Schools Rated D}) + (\\text{Number of Schools Rated F})}{\\text{Total Number of Schools with Rating in Region}}\\]\n\n\n1.2.2 Multi-Year Failure\nFor the multi-year failure metric, we considered schools with an overall rating &lt;70 to be “failing” and any schools with a failing rating for two subsequent rated years to have experienced a multi-year failure. To be counted as being in multi-year failure for the 2024-2025 school year, a school must have an overall rating score of &lt;70 in the 2024-2025 school year and the 2023-2024 school year.\nIndividual schools are marked has having a previous had multi-year failure if the school had a rating &lt;70 for any two or more subsequently rated years prior to 2024-2025.\n\n1.2.2.1 Notes & Exclusions\n\nNo schools received ratings for the 2019-2020 and 2020-2021 school years, because of the COVID-19 pandemic. This metric considers a school to have a multi-year failure if they were below the threshold in 2018-2019 and 2021-2022, because they were below the threshold for two subsequently rated years.\n\n\n\n\n1.2.3 Source\nFor the each of the school years, accountability ratings were downloaded from the TEA Accountability Ratings page, by selecting the appropriate year and navigating to the relevant Data Download page.\nAlthough the download page structure differs some by year, in each case parameters were set to campus-level report, selecting the accountability summary (Texas Education Agency 2018, 2019, 2022, 2023, 2024, 2025a), as seen in the screenshots below.\n\n\n\nScreenshot of download parameters for 2022-2023 accountability ratings\n\n\nFor 2022-2023 through 2024-2025, we requested the Accountability Rating and Overall Score data elements, but such download options were not available for the earlier years.\n\n\n\nScreenshot of download parameters for 2017-2018 accountability ratings.\n\n\nAlthough the script to call each year varies slightly, each includes a filter to maintain all IDEA TX schools, include any ratings of IDEA Travis schools that are a partnership with Midland ISD. At this time, IDEA Travis schools are considered one school, as “IDEA Travis Academy,” by TEA. If in the future, IDEA Travis schools are separated with TEA records, the filter shown below should hopefully help to retrieve any IDEA Travis schools when applied to the appropriate year.\n\nratings_25  &lt;- read.csv(\n  \"filepath/2025_Campus_Accountability_Summary.csv\", \n    header = TRUE, \n    as.is = c(\"CAMPUS\", \"DISTRICT\", \"COUNTY\", \"REGION\"),\n    colClasses = \"character\"\n  ) %&gt;%\n  filter( # Keeps IDEA TX and the Travis Midland schools\n    DISTRICT == \"108807\" | \n    CAMPUS == \"165901139\" | \n    CAMPUS == \"165901138\" | \n    CAMPUS == \"165901137\" ) %&gt;% \n  select(CAMPUS, CAMPNAME, DISTRICT, CDALLS) %&gt;%\n  rename(\n    Rating_2024_2025 = CDALLS,\n    CAMPNAME25 = CAMPNAME) %&gt;%\n  mutate(Rating_2024_2025 = as.numeric(Rating_2024_2025))\n\n\n\n\n\nIDEA Public Schools Data Warehouse. 2025. “STAAR Assessment Data.”\n\n\nIDEA RAP Team. n.d. IDEA r&a Manual. https://idea-analytics.github.io/r_and_a_manual/index.html.\n\n\nTexas Education Agency. 2018. “2018 Accountability Ratings: 2019 Data Download.” https://rptsvr1.tea.texas.gov/perfreport/account/2018/download.html.\n\n\n———. 2019. “2019 Accountability Ratings: 2019 Data Download.” https://rptsvr1.tea.texas.gov/perfreport/account/2019/download.html.\n\n\n———. 2022. “2022 Accountability Ratings: 2022 Data Download.” https://rptsvr1.tea.texas.gov/perfreport/account/2022/download.html.\n\n\n———. 2023. “2023 Accountability Ratings: 2023 Data Download.” https://rptsvr1.tea.texas.gov/perfreport/account/acct_download?year=2023.\n\n\n———. 2024. “2024 Accountability Ratings: 2024 Data Download.” https://rptsvr1.tea.texas.gov/perfreport/account/acct_download?year=2024.\n\n\n———. 2025a. “2025 Accountability Ratings: 2025 Data Download.” https://rptsvr1.tea.texas.gov/perfreport/account/acct_download?year=2025.\n\n\n———. 2025b. Accountability Manual for 2025 Ratings for Texas Public School Districts and Campuses. https://tea.texas.gov/texas-schools/accountability/academic-accountability/performance-reporting/2025-accountability-manual-full.pdf.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>School Performance Data</span>"
+    ]
+  },
+  {
+    "objectID": "02-FinancialViability.html",
+    "href": "02-FinancialViability.html",
+    "title": "2  Financial Viability",
+    "section": "",
+    "text": "2.1 Days Cash on Hand",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Financial Viability</span>"
+    ]
+  },
+  {
+    "objectID": "02-FinancialViability.html#sec-DebtRatio",
+    "href": "02-FinancialViability.html#sec-DebtRatio",
+    "title": "2  Financial Viability",
+    "section": "2.2 Debt Service Coverage Ratio",
+    "text": "2.2 Debt Service Coverage Ratio",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Financial Viability</span>"
+    ]
+  },
+  {
+    "objectID": "02-FinancialViability.html#sec-PerPupil",
+    "href": "02-FinancialViability.html#sec-PerPupil",
+    "title": "2  Financial Viability",
+    "section": "2.3 Percent of per pupil revenue going to regional office budget",
+    "text": "2.3 Percent of per pupil revenue going to regional office budget",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Financial Viability</span>"
+    ]
+  },
+  {
+    "objectID": "03-CapitalCapacity.html",
+    "href": "03-CapitalCapacity.html",
+    "title": "3  Capital Capacity",
+    "section": "",
+    "text": "3.1 Percentage Debt Coverage Across Entity",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Capital Capacity</span>"
+    ]
+  },
+  {
+    "objectID": "04-TeacherSupply.html",
+    "href": "04-TeacherSupply.html",
+    "title": "4  Teacher Supply",
+    "section": "",
+    "text": "4.1 Percent of Teaching Positions Hired by First Day of Instruction\ntext!",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Teacher Supply</span>"
+    ]
+  },
+  {
+    "objectID": "04-TeacherSupply.html#sec-YOYTeach",
+    "href": "04-TeacherSupply.html#sec-YOYTeach",
+    "title": "4  Teacher Supply",
+    "section": "4.2 Year Over Year Teacher Retention",
+    "text": "4.2 Year Over Year Teacher Retention\nStaff Retention Definitions\n\nThe formula for calculating retention is as follows: \\[\\frac{1-\\text{Leaver}}{\\text{Headcount}}*100\\]\nThe 2024-25 Staff Retention Year is defined as 07/1/2024 – 08/14/2025 (specific employee categories may have a different start to their Staff Retention Year based on their work calendar, but will not be earlier than 07/01/2024 – details below).\n“Headcount” is defined as the sum of all full-time, permanent employees who worked at IDEA Public Schools between 07/1/2024 and 08/14/2025. Examples of staff job groups that fall into this category are Administrative Professionals, Campus Administrative Professionals, Clerical Technical, Instructional Support, Teachers, and Manual Trades.\n\nRetention includes any staff member who is classified as full-time, permanent staff, including partial FTE staff. Descriptions of the employee classifications can be found in the Employee Handbook.\nChiefs are included in Executive Office retention, not the retention for their individual areas.\nPrincipals-in-Residence count toward the retention of the school they are assigned to for their residency.\nFounding Teacher Fellows count toward the retention of the school at which they are assigned for their fellowship.\nAll non-year-round staff who leave prior to the first day of their work calendar for the current staff retention year will be coded with an exit date prior to 08/15/2025 to ensure they do not count toward following staff retention year.\nExclusions: Employees classified as anything other than full-time, permanent employees are excluded from Headcount and Leavers. This includes, but is not limited to, the following titles:\n\nEnrichment Instructor, Enrichment Specialist, 21st Century Enrichment Specialist\nIntern, including Summer Interns and Year-round Interns\nAfter School Care\nParent Liaison\nMonitor, including Bus Monitor, Flex Monitor, Lunch Monitor, Recess Monitor, and School Monitor\nCamp Rio Program Staff & Camp Counselor\nFSS Substitute\nTutor\nAthletic Coach\nIDEA Substitute Teacher\n\n“Leaver” is defined as the sum of all full-time, permanent employees who have an effective exit date between 07/1/2024 and 08/14/2025.\n\nFull-time, permanent employees who transition into non-full-time permanent roles during the current Retention Year will count as leavers.\nFull-time, permanent employees who retire will count as leavers.\nThe last full-time role an employee holds is the position held accountable for retention. If an employee changes during the year from full time role A to full time role B then leaves the organization, they will be counted as a leaver for role B.\n\nExample: An API transitions to teacher in October and decides to leave at the end of the year. They will be counted as a teacher leaver\n\nThe last location an employee is based at and held a full-time role that they reported to is held accountable for retention of that employee. If an employee changes during the year from location A to location B, then leaves the organization, they will be counted as a leaver for location B as long as they reported to work at Location B.\n\nExample: A teacher transfers from IDEA Pharr to IDEA Rise in December and then leaves at the end of the year. They will be counted as a teacher leaver for IDEA Rise.\n\nEmployees moving from a permanent, full-time position to another permanent, full-time position are not considered leavers.\nFull-time employees in a permanent in the current retention year who transition to a non-full-time permanent role during the same retention year will count as a leaver.\nPermanent, full-time and permanent, part-time employees who leave IDEA Public Schools and return to IDEA Public Schools in a permanent, full-time or permanent, part-time capacity during the same retention year will not count as leavers.\nEmployees leaving and returning to the organization in a retention-eligible role with a start date in the same school year (re-hire) do not count as leavers. Those employees who return to work after the start of the next retention year will count as leavers.\nPositions that are eliminated due to budget constraints and/or grant-funded positions that are terminated because the grant concluded and was not continued will not count as leavers.\nEmployees who are reassigned but decline the reassignment and leave the organization will count as leavers attributed to the manager/campus for which they were employed on their last day of employment.\nPositions that are eliminated for other reasons will count as leavers.\nEmployees coded with the following termination codes will not be counted as leavers:\n\nIN04 - Death, IN05 - Ineligible For Hire, IN08 - Failed I-9 Verification, OT01 - Entity Change, OT02 - Employee did Not Start.\nOT02 – Employee did Not Start will only apply to new hires who did not begin a position at IDEA, not transfers. o Staff in National roles will not be counted in regional staff retention. They will only count as headcount and leavers for their Chief Area team.\n\nStaff members eligible to retire through their state employee retirement program and submit required paperwork within the staff retention year deadlines will not count as leavers once their official retirement is verified. o Leavers during the current staff retention year who are not exited before retention results for the current staff retention year are finalized, will count as leavers for the following staff retention year.\nLeaver role, status, or location changes not entered within the current staff retention year that are not entered before retention results for current staff retention year are finalized will not be captured in the final staff retention report of the current staff retention year.\n\n\n“School” is defined as either Academy or College Prep, typically the unit led by a principal.\n“Campus” is defined as Academy + College Prep; typically, both schools at one location.\nThe final retention metric will be rounded to the nearest whole number based on the tenths digit. (If .xx is ≥ .50, then it will round up. If .xx is &lt;.50, then it will round down.) For example:\n\n84.50% will round to 85%\n84.49% will round down to 84%\n\nStaff who are shared between Academy and College Prep will count 50% toward Academy, and 50% toward College Prep head count and leaver count. This includes all shared staff including, but not limited to, instructional staff, operations staff, and any school support staff. This ensures that shared staff, including operations, impact school retention. The formula is as follows: \\[\\text{School Retention} = 1-\\frac{\\text{School Leavers} + 0.5(\\text{Shared Staff Leavers})}{\\text{School Headcount} + 0.5(\\text{Shared Staff Headcount})} \\]\n\nAll IDEA Public Schools Teacher Retention\n\n“Headcount” is defined as the sum of all full-time, permanent employees in the Teacher Job Group who work at IDEA Public Schools between the start of their 2024-25 Work Calendar and 08/14/2025.\n\nInstructional staff (teachers and co-teachers/instructional support) and campus administrative professionals will count toward the school at which they work, not the campus.\nCampus support staff (i.e. administrative assistants, testing coordinators, 21st century site coordinators) will count toward campus and school retention if they are shared and toward school retention if they are not shared.\n\n“Leaver” is defined as the sum of all full-time, permanent Teachers who have an effective exit date between the first day of their 24-25 School Year work calendar (even if they participate in summer school or summer professional development) and 08/14/2025.\n\nAll teachers who leave prior 08/15/2025 will be coded with an exit date prior to 08/15/2025 to ensure they do not count toward 2025-2026 retention.\n\nCo-teachers and Founding Teacher Fellows do not count toward Teacher retention, to better align with PEIMS Teacher reporting, but do count toward All Staff retention. These roles will be included in the school All Staff retention but not in the school Teacher retention.\n\n\nThe teacher retention year begins on the first day of their work calendar, not the first day of summer PD. If a returning teacher no-shows for the first days of all-staff BOY PD, even if s/he were part of summer PD, s/eh will be counted as a leaver for the previous school year.\n\nIf a New Hire is a no-show on the first day of their work calendar, they should be coded as OT02 – Employee did not start, which will exclude them from the count.o If an employee shows up for the first day of their work calendar and subsequently leaves, they will count toward retention that year.\nFlex Teachers and Flex Co-Teachers count toward the retention for the Region in which they were hired, unless they have officially transitioned to a permanent campus-based teaching role.\n\nFlex Teachers and Flex Co-Teachers will not count toward the retention for the home campus at which they are based before they are assigned to a permanent campus-based role.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Teacher Supply</span>"
+    ]
+  },
+  {
+    "objectID": "05-Leadership.html",
+    "href": "05-Leadership.html",
+    "title": "5  Leadership and Headquarters Bandwidth",
+    "section": "",
+    "text": "5.1 Percentage of Leaders 3+ years in role",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Leadership and Headquarters Bandwidth</span>"
+    ]
+  },
+  {
+    "objectID": "05-Leadership.html#sec-05Leaders",
+    "href": "05-Leadership.html#sec-05Leaders",
+    "title": "5  Leadership and Headquarters Bandwidth",
+    "section": "",
+    "text": "5.1.1 Percentage of executive directors 3+ years in role\n\n\n5.1.2 Percentage of principals 3+ years in role\n\n\n5.1.3 Percentage of APIs 3+ years in role\n\n\n5.1.4 Notes & Exclusions\n\n\n5.1.5 Source",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Leadership and Headquarters Bandwidth</span>"
+    ]
+  },
+  {
+    "objectID": "05-Leadership.html#sec-05APIVacancy",
+    "href": "05-Leadership.html#sec-05APIVacancy",
+    "title": "5  Leadership and Headquarters Bandwidth",
+    "section": "5.2 API vacancy rate (expected + new)",
+    "text": "5.2 API vacancy rate (expected + new)\n\n5.2.1 Notes & Exclusions\n\n\n5.2.2 Source",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Leadership and Headquarters Bandwidth</span>"
+    ]
+  },
+  {
+    "objectID": "05-Leadership.html#sec-05CAPGrads",
+    "href": "05-Leadership.html#sec-05CAPGrads",
+    "title": "5  Leadership and Headquarters Bandwidth",
+    "section": "5.3 Number of CAP grads (2-year)",
+    "text": "5.3 Number of CAP grads (2-year)\n\n5.3.1 Notes & Exclusions\n\n\n5.3.2 Source\nThe STAAR data includes STAAR and high school level End-of-Course (EOC) assessments stored in IDEA’s data warehouse(IDEA Public Schools Data Warehouse 2025).\n\nSTAAR &lt;- get_table(.table_name = \"STAAR\", .database_name = \"Dashboard\",\n                   .schema = \"dbo\", .server_name = \"RGVPDRA-DASQL\") %&gt;%\n  filter(\n    ## Includes STAAR but not STAAR Alt 2 \n      TestVersion == \"S\", \n    ## Includes Scored assessments only\n      ScoreCode == \"S\", \n    ## Includes Math and English \n    (SubjectCode == \"Math\" |\n     SubjectCode == \"Reading\" |\n     SubjectCode == \"Algebra I\" |\n     SubjectCode == \"English I\" |\n     SubjectCode == \"English II\"),\n    ## Select desired school years\n    (SchoolYear == \"2024-2025\" |\n     SchoolYear == \"2023-2024\")\n  )\n\n\n\n\n\nIDEA Public Schools Data Warehouse. 2025. “STAAR Assessment Data.”",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Leadership and Headquarters Bandwidth</span>"
+    ]
+  },
+  {
+    "objectID": "06-Enrollment.html",
+    "href": "06-Enrollment.html",
+    "title": "6  Enrollment Readiness / Student Demand",
+    "section": "",
+    "text": "6.1 Percentage Meeting Enrollment Goal",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Enrollment Readiness / Student Demand</span>"
+    ]
+  },
+  {
+    "objectID": "06-Enrollment.html#sec-06Goal",
+    "href": "06-Enrollment.html#sec-06Goal",
+    "title": "6  Enrollment Readiness / Student Demand",
+    "section": "",
+    "text": "6.1.1 Notes & Exclusions\n\n\n6.1.2 Source",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Enrollment Readiness / Student Demand</span>"
+    ]
+  },
+  {
+    "objectID": "06-Enrollment.html#sec-06Persist",
+    "href": "06-Enrollment.html#sec-06Persist",
+    "title": "6  Enrollment Readiness / Student Demand",
+    "section": "6.2 Percentage Student Annual Persistence",
+    "text": "6.2 Percentage Student Annual Persistence\n\n6.2.1 Notes & Exclusions\n\n\n6.2.2 Source",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Enrollment Readiness / Student Demand</span>"
+    ]
+  },
+  {
+    "objectID": "06-Enrollment.html#sec-06Cap",
+    "href": "06-Enrollment.html#sec-06Cap",
+    "title": "6  Enrollment Readiness / Student Demand",
+    "section": "6.3 Percentage of Schools/Campuses Under 85% Capacity (Model 1501)",
+    "text": "6.3 Percentage of Schools/Campuses Under 85% Capacity (Model 1501)\n\n6.3.1 Notes & Exclusions\n\n\n6.3.2 Source\nThe STAAR data includes STAAR and high school level End-of-Course (EOC) assessments stored in IDEA’s data warehouse(IDEA Public Schools Data Warehouse 2025).\n\nSTAAR &lt;- get_table(.table_name = \"STAAR\", .database_name = \"Dashboard\",\n                   .schema = \"dbo\", .server_name = \"RGVPDRA-DASQL\") %&gt;%\n  filter(\n    ## Includes STAAR but not STAAR Alt 2 \n      TestVersion == \"S\", \n    ## Includes Scored assessments only\n      ScoreCode == \"S\", \n    ## Includes Math and English \n    (SubjectCode == \"Math\" |\n     SubjectCode == \"Reading\" |\n     SubjectCode == \"Algebra I\" |\n     SubjectCode == \"English I\" |\n     SubjectCode == \"English II\"),\n    ## Select desired school years\n    (SchoolYear == \"2024-2025\" |\n     SchoolYear == \"2023-2024\")\n  )\n\n\n\n\n\nIDEA Public Schools Data Warehouse. 2025. “STAAR Assessment Data.”",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Enrollment Readiness / Student Demand</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "IDEA Public Schools Data Warehouse. 2025. “STAAR Assessment\nData.”\n\n\nIDEA RAP Team. n.d. IDEA r&a Manual. https://idea-analytics.github.io/r_and_a_manual/index.html.\n\n\nTexas Education Agency. 2018. “2018 Accountability Ratings: 2019\nData Download.” https://rptsvr1.tea.texas.gov/perfreport/account/2018/download.html.\n\n\n———. 2019. “2019 Accountability Ratings: 2019 Data\nDownload.” https://rptsvr1.tea.texas.gov/perfreport/account/2019/download.html.\n\n\n———. 2022. “2022 Accountability Ratings: 2022 Data\nDownload.” https://rptsvr1.tea.texas.gov/perfreport/account/2022/download.html.\n\n\n———. 2023. “2023 Accountability Ratings: 2023 Data\nDownload.” https://rptsvr1.tea.texas.gov/perfreport/account/acct_download?year=2023.\n\n\n———. 2024. “2024 Accountability Ratings: 2024 Data\nDownload.” https://rptsvr1.tea.texas.gov/perfreport/account/acct_download?year=2024.\n\n\n———. 2025a. “2025 Accountability Ratings: 2025 Data\nDownload.” https://rptsvr1.tea.texas.gov/perfreport/account/acct_download?year=2025.\n\n\n———. 2025b. Accountability Manual for 2025 Ratings for Texas Public\nSchool Districts and Campuses. https://tea.texas.gov/texas-schools/accountability/academic-accountability/performance-reporting/2025-accountability-manual-full.pdf.",
+    "crumbs": [
+      "References"
+    ]
+  }
+]

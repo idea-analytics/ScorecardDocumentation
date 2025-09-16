@@ -1,0 +1,44 @@
+# Enrollment Readiness / Student Demand {#sec-06Enroll}
+
+## Percentage Meeting Enrollment Goal {#sec-06Goal}
+
+### Notes & Exclusions
+
+### Source
+
+## Percentage Student Annual Persistence {#sec-06Persist}
+
+### Notes & Exclusions
+
+### Source
+
+## Percentage of Schools/Campuses Under 85% Capacity (Model 1501) {#sec-06Cap}
+
+### Notes & Exclusions
+
+### Source
+
+The STAAR data includes STAAR and high school level End-of-Course (EOC) assessments stored in IDEA's data warehouse[@STAAR].
+
+```{r STAAR}
+#| eval: false
+#| include: true
+
+STAAR <- get_table(.table_name = "STAAR", .database_name = "Dashboard",
+                   .schema = "dbo", .server_name = "RGVPDRA-DASQL") %>%
+  filter(
+    ## Includes STAAR but not STAAR Alt 2 
+      TestVersion == "S", 
+    ## Includes Scored assessments only
+      ScoreCode == "S", 
+    ## Includes Math and English 
+    (SubjectCode == "Math" |
+     SubjectCode == "Reading" |
+     SubjectCode == "Algebra I" |
+     SubjectCode == "English I" |
+     SubjectCode == "English II"),
+    ## Select desired school years
+    (SchoolYear == "2024-2025" |
+     SchoolYear == "2023-2024")
+  )
+```
