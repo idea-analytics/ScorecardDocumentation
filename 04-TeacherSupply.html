@@ -20,7 +20,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -194,8 +249,16 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-TeachHire" id="toc-sec-TeachHire" class="nav-link active" data-scroll-target="#sec-TeachHire"><span class="header-section-number">4.1</span> Percent of Teaching Positions Hired by First Day of Instruction</a></li>
-  <li><a href="#sec-YOYTeach" id="toc-sec-YOYTeach" class="nav-link" data-scroll-target="#sec-YOYTeach"><span class="header-section-number">4.2</span> Year Over Year Teacher Retention</a></li>
+  <li><a href="#sec-TeachHire" id="toc-sec-TeachHire" class="nav-link active" data-scroll-target="#sec-TeachHire"><span class="header-section-number">4.1</span> Percent of Teaching Positions Hired by First Day of Instruction</a>
+  <ul class="collapse">
+  <li><a href="#source" id="toc-source" class="nav-link" data-scroll-target="#source"><span class="header-section-number">4.1.1</span> Source</a></li>
+  <li><a href="#notes-exclusions" id="toc-notes-exclusions" class="nav-link" data-scroll-target="#notes-exclusions"><span class="header-section-number">4.1.2</span> Notes &amp; Exclusions</a></li>
+  </ul></li>
+  <li><a href="#sec-YOYTeach" id="toc-sec-YOYTeach" class="nav-link" data-scroll-target="#sec-YOYTeach"><span class="header-section-number">4.2</span> Year Over Year (YOY) Teacher Retention</a>
+  <ul class="collapse">
+  <li><a href="#source-1" id="toc-source-1" class="nav-link" data-scroll-target="#source-1"><span class="header-section-number">4.2.1</span> Source</a></li>
+  <li><a href="#sec-retEx" id="toc-sec-retEx" class="nav-link" data-scroll-target="#sec-retEx"><span class="header-section-number">4.2.2</span> Notes &amp; Exclusions</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -223,94 +286,126 @@ window.Quarto = {
 
 <section id="sec-TeachHire" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="sec-TeachHire"><span class="header-section-number">4.1</span> Percent of Teaching Positions Hired by First Day of Instruction</h2>
-<p>text!</p>
+<section id="source" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="source"><span class="header-section-number">4.1.1</span> Source</h3>
+</section>
+<section id="notes-exclusions" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="notes-exclusions"><span class="header-section-number">4.1.2</span> Notes &amp; Exclusions</h3>
+</section>
 </section>
 <section id="sec-YOYTeach" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="sec-YOYTeach"><span class="header-section-number">4.2</span> Year Over Year Teacher Retention</h2>
+<h2 data-number="4.2" class="anchored" data-anchor-id="sec-YOYTeach"><span class="header-section-number">4.2</span> Year Over Year (YOY) Teacher Retention</h2>
+<p>Year Over Year (YOY) teacher retention is intended to represent the percentage of teaching staff hired in one school year that returned to a teaching position at IDEA Public Schools for the next school year. Each year, IDEA’s Human Assets team develops a comprehensive specifications for calculating staff retention, as detailed in their Standard Operating Procedures (SOP), stored on <a href="https://ideapublicschoolsorg.sharepoint.com/:u:/r/HumanAssets/SitePages/Retention-Policy.aspx?csf=1&amp;web=1&amp;e=6ODfpp">here</a> on The Hub.</p>
+<p>To my understanding (Hilary Doe), most of these specifications are carried out when labeling each individual as a Leaver or not prior to the data being pushed to the Data Warehouse. For example, individuals who do not return because they retire are not counted as Leavers according to the SOP <span class="citation" data-cites="RetSOP2024">(<a href="references.html#ref-RetSOP2024" role="doc-biblioref">IDEA Public Schools 2024</a>)</span>. Individuals with an Exit Reason of “Voluntary Retirement” are not listed as Leavers within the reporting.employees data. A full list of specifications, copied from the 2024-2025 Staff Retention SOP are listed in <a href="#sec-retEx" class="quarto-xref"><span>Section 4.2.2</span></a>.</p>
+<section id="source-1" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="source-1"><span class="header-section-number">4.2.1</span> Source</h3>
+<p>The YOY teacher retention data come from the reporting.employees table in the data warehouse<span class="citation" data-cites="RetSOP2024">(<a href="references.html#ref-RetSOP2024" role="doc-biblioref">IDEA Public Schools 2024</a>)</span> and are limited to staff in teaching positions (<code>filter(ISTEACHER == "1")</code>}).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>reporting.employees <span class="ot">&lt;-</span> <span class="fu">get_table</span>(<span class="at">.table_name =</span> <span class="st">"Employees"</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">.database_name =</span> <span class="st">"Staffing"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">.schema =</span> <span class="st">"Reporting"</span>, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">.server_name =</span> <span class="st">"RGVPDSD-DWPRD1"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="sec-retEx" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="sec-retEx"><span class="header-section-number">4.2.2</span> Notes &amp; Exclusions</h3>
+<p>The following details are taken directly from the 2024-2025 Staff Retention Standard Operating Procedures <span class="citation" data-cites="RetSOP2024">(<a href="references.html#ref-RetSOP2024" role="doc-biblioref">IDEA Public Schools 2024</a>)</span>, however it is important to note that each year’s SOP can be differ slightly, including the length of the staff retention year. For example, the 2023-2024 Staff Retention Year is defined as 7/1/2023 – 6/30/2024, whereas the 2024-2025 staff retention year is defined as 07/1/2024 – 08/14/2025 <span class="citation" data-cites="RetSOP2023 RetSOP2024">(<a href="references.html#ref-RetSOP2023" role="doc-biblioref">IDEA Public Schools 2023</a>, <a href="references.html#ref-RetSOP2024" role="doc-biblioref">2024</a>)</span>.</p>
+<blockquote class="blockquote">
 <p>Staff Retention Definitions</p>
 <ul>
-<li><p>The formula for calculating retention is as follows: <span class="math display">\[\frac{1-\text{Leaver}}{\text{Headcount}}*100\]</span></p></li>
-<li><p>The 2024-25 Staff Retention Year is defined as 07/1/2024 – 08/14/2025 (specific employee categories may have a different start to their Staff Retention Year based on their work calendar, but will not be earlier than 07/01/2024 – details below).</p></li>
-<li><p>“Headcount” is defined as the sum of all full-time, permanent employees who worked at IDEA Public Schools between 07/1/2024 and 08/14/2025. Examples of staff job groups that fall into this category are Administrative Professionals, Campus Administrative Professionals, Clerical Technical, Instructional Support, Teachers, and Manual Trades.</p>
+<li>The formula for calculating retention is as follows: <span class="math display">\[\text{Percent Retained} = \frac{1-\text{Leavers}}{\text{Headcount}}*100\]</span></li>
+<li>The 2024-25 Staff Retention Year is defined as 07/1/2024 – 08/14/2025 (specific employee categories may have a different start to their Staff Retention Year based on their work calendar, but will not be earlier than 07/01/2024 – details below).</li>
+<li>“Headcount” is defined as the sum of all full-time, permanent employees who worked at IDEA Public Schools between 07/1/2024 and 08/14/2025. Examples of staff job groups that fall into this category are Administrative Professionals, Campus Administrative Professionals, Clerical Technical, Instructional Support, Teachers, and Manual Trades.
 <ul>
-<li><p>Retention includes any staff member who is classified as full-time, permanent staff, including partial FTE staff. Descriptions of the employee classifications can be found in the Employee Handbook.</p></li>
-<li><p>Chiefs are included in Executive Office retention, not the retention for their individual areas.</p></li>
-<li><p>Principals-in-Residence count toward the retention of the school they are assigned to for their residency.</p></li>
-<li><p>Founding Teacher Fellows count toward the retention of the school at which they are assigned for their fellowship.</p></li>
-<li><p>All non-year-round staff who leave prior to the first day of their work calendar for the current staff retention year will be coded with an exit date prior to 08/15/2025 to ensure they do not count toward following staff retention year.</p></li>
-<li><p>Exclusions: Employees classified as anything other than full-time, permanent employees are excluded from Headcount and Leavers. This includes, but is not limited to, the following titles:</p>
+<li>Retention includes any staff member who is classified as full-time, permanent staff, including partial FTE staff. Descriptions of the employee classifications can be found in the Employee Handbook.</li>
+<li>Chiefs are included in Executive Office retention, not the retention for their individual areas.</li>
+<li>Principals-in-Residence count toward the retention of the school they are assigned to for their residency.</li>
+<li>Founding Teacher Fellows count toward the retention of the school at which they are assigned for their fellowship.</li>
+<li>All non-year-round staff who leave prior to the first day of their work calendar for the current staff retention year will be coded with an exit date prior to 08/15/2025 to ensure they do not count toward following staff retention year.</li>
+<li>Exclusions: Employees classified as anything other than full-time, permanent employees are excluded from Headcount and Leavers. This includes, but is not limited to, the following titles:
 <ul>
-<li><p>Enrichment Instructor, Enrichment Specialist, 21st Century Enrichment Specialist</p></li>
-<li><p>Intern, including Summer Interns and Year-round Interns</p></li>
-<li><p>After School Care</p></li>
-<li><p>Parent Liaison</p></li>
-<li><p>Monitor, including Bus Monitor, Flex Monitor, Lunch Monitor, Recess Monitor, and School Monitor</p></li>
-<li><p>Camp Rio Program Staff &amp; Camp Counselor</p></li>
-<li><p>FSS Substitute</p></li>
-<li><p>Tutor</p></li>
-<li><p>Athletic Coach</p></li>
-<li><p>IDEA Substitute Teacher</p></li>
+<li>Enrichment Instructor, Enrichment Specialist, 21st Century Enrichment Specialist</li>
+<li>Intern, including Summer Interns and Year-round Interns</li>
+<li>After School Care</li>
+<li>Parent Liaison</li>
+<li>Monitor, including Bus Monitor, Flex Monitor, Lunch Monitor, Recess Monitor, and School Monitor</li>
+<li>Camp Rio Program Staff &amp; Camp Counselor</li>
+<li>FSS Substitute</li>
+<li>Tutor</li>
+<li>Athletic Coach</li>
+<li>IDEA Substitute Teacher</li>
 </ul></li>
-<li><p>“Leaver” is defined as the sum of all full-time, permanent employees who have an effective exit date between 07/1/2024 and 08/14/2025.</p>
+<li>“Leaver” is defined as the sum of all full-time, permanent employees who have an effective exit date between 07/1/2024 and 08/14/2025.
 <ul>
-<li><p>Full-time, permanent employees who transition into non-full-time permanent roles during the current Retention Year will count as leavers.</p></li>
-<li><p>Full-time, permanent employees who retire will count as leavers.</p></li>
-<li><p>The last full-time role an employee holds is the position held accountable for retention. If an employee changes during the year from full time role A to full time role B then leaves the organization, they will be counted as a leaver for role B.</p>
+<li>Full-time, permanent employees who transition into non-full-time permanent roles during the current Retention Year will count as leavers.</li>
+<li>Full-time, permanent employees who retire will count as leavers.</li>
+<li>The last full-time role an employee holds is the position held accountable for retention. If an employee changes during the year from full time role A to full time role B then leaves the organization, they will be counted as a leaver for role B.
 <ul>
 <li>Example: An API transitions to teacher in October and decides to leave at the end of the year. They will be counted as a teacher leaver</li>
 </ul></li>
-<li><p>The last location an employee is based at and held a full-time role that they reported to is held accountable for retention of that employee. If an employee changes during the year from location A to location B, then leaves the organization, they will be counted as a leaver for location B as long as they reported to work at Location B.</p>
+<li>The last location an employee is based at and held a full-time role that they reported to is held accountable for retention of that employee. If an employee changes during the year from location A to location B, then leaves the organization, they will be counted as a leaver for location B as long as they reported to work at Location B.
 <ul>
 <li>Example: A teacher transfers from IDEA Pharr to IDEA Rise in December and then leaves at the end of the year. They will be counted as a teacher leaver for IDEA Rise.</li>
 </ul></li>
-<li><p>Employees moving from a permanent, full-time position to another permanent, full-time position are not considered leavers.</p></li>
-<li><p>Full-time employees in a permanent in the current retention year who transition to a non-full-time permanent role during the same retention year will count as a leaver.</p></li>
-<li><p>Permanent, full-time and permanent, part-time employees who leave IDEA Public Schools and return to IDEA Public Schools in a permanent, full-time or permanent, part-time capacity during the same retention year will not count as leavers.</p></li>
-<li><p>Employees leaving and returning to the organization in a retention-eligible role with a start date in the same school year (re-hire) do not count as leavers. Those employees who return to work after the start of the next retention year will count as leavers.</p></li>
-<li><p>Positions that are eliminated due to budget constraints and/or grant-funded positions that are terminated because the grant concluded and was not continued will not count as leavers.</p></li>
-<li><p>Employees who are reassigned but decline the reassignment and leave the organization will count as leavers attributed to the manager/campus for which they were employed on their last day of employment.</p></li>
-<li><p>Positions that are eliminated for other reasons will count as leavers.</p></li>
-<li><p>Employees coded with the following termination codes will not be counted as leavers:</p>
+<li>Employees moving from a permanent, full-time position to another permanent, full-time position are not considered leavers.</li>
+<li>Full-time employees in a permanent in the current retention year who transition to a non-full-time permanent role during the same retention year will count as a leaver.</li>
+<li>Permanent, full-time and permanent, part-time employees who leave IDEA Public Schools and return to IDEA Public Schools in a permanent, full-time or permanent, part-time capacity during the same retention year will not count as leavers.</li>
+<li>Employees leaving and returning to the organization in a retention-eligible role with a start date in the same school year (re-hire) do not count as leavers. Those employees who return to work after the start of the next retention year will count as leavers.</li>
+<li>Positions that are eliminated due to budget constraints and/or grant-funded positions that are terminated because the grant concluded and was not continued will not count as leavers.</li>
+<li>Employees who are reassigned but decline the reassignment and leave the organization will count as leavers attributed to the manager/campus for which they were employed on their last day of employment.</li>
+<li>Positions that are eliminated for other reasons will count as leavers.</li>
+<li>Employees coded with the following termination codes will not be counted as leavers:
 <ul>
-<li><p>IN04 - Death, IN05 - Ineligible For Hire, IN08 - Failed I-9 Verification, OT01 - Entity Change, OT02 - Employee did Not Start.</p></li>
-<li><p>OT02 – Employee did Not Start will only apply to new hires who did not begin a position at IDEA, not transfers. o Staff in National roles will not be counted in regional staff retention. They will only count as headcount and leavers for their Chief Area team.</p></li>
+<li>IN04 - Death, IN05 - Ineligible For Hire, IN08 - Failed I-9 Verification, OT01 - Entity Change, OT02 - Employee did Not Start.</li>
+<li>OT02 – Employee did Not Start will only apply to new hires who did not begin a position at IDEA, not transfers. o Staff in National roles will not be counted in regional staff retention. They will only count as headcount and leavers for their Chief Area team.</li>
 </ul></li>
-<li><p>Staff members eligible to retire through their state employee retirement program and submit required paperwork within the staff retention year deadlines will not count as leavers once their official retirement is verified. o Leavers during the current staff retention year who are not exited before retention results for the current staff retention year are finalized, will count as leavers for the following staff retention year.</p></li>
-<li><p>Leaver role, status, or location changes not entered within the current staff retention year that are not entered before retention results for current staff retention year are finalized will not be captured in the final staff retention report of the current staff retention year.</p></li>
+<li>Staff members eligible to retire through their state employee retirement program and submit required paperwork within the staff retention year deadlines will not count as leavers once their official retirement is verified. o Leavers during the current staff retention year who are not exited before retention results for the current staff retention year are finalized, will count as leavers for the following staff retention year.</li>
+<li>Leaver role, status, or location changes not entered within the current staff retention year that are not entered before retention results for current staff retention year are finalized will not be captured in the final staff retention report of the current staff retention year.</li>
 </ul></li>
 </ul></li>
-<li><p>“School” is defined as either Academy or College Prep, typically the unit led by a principal.</p></li>
-<li><p>“Campus” is defined as Academy + College Prep; typically, both schools at one location.</p></li>
-<li><p>The final retention metric will be rounded to the nearest whole number based on the tenths digit. (If .xx is ≥ .50, then it will round up. If .xx is &lt;.50, then it will round down.) For example:</p>
+<li>“School” is defined as either Academy or College Prep, typically the unit led by a principal.</li>
+<li>“Campus” is defined as Academy + College Prep; typically, both schools at one location.</li>
+<li>The final retention metric will be rounded to the nearest whole number based on the tenths digit. (If .xx is ≥ .50, then it will round up. If .xx is &lt;.50, then it will round down.) For example:
 <ul>
-<li><p>84.50% will round to 85%</p></li>
-<li><p>84.49% will round down to 84%</p></li>
+<li>84.50% will round to 85%</li>
+<li>84.49% will round down to 84%</li>
 </ul></li>
-<li><p>Staff who are shared between Academy and College Prep will count 50% toward Academy, and 50% toward College Prep head count and leaver count. This includes all shared staff including, but not limited to, instructional staff, operations staff, and any school support staff. This ensures that shared staff, including operations, impact school retention. The formula is as follows: <span class="math display">\[\text{School Retention} = 1-\frac{\text{School Leavers} + 0.5(\text{Shared Staff Leavers})}{\text{School Headcount} + 0.5(\text{Shared Staff Headcount})} \]</span></p></li>
+<li>Staff who are shared between Academy and College Prep will count 50% toward Academy, and 50% toward College Prep head count and leaver count. This includes all shared staff including, but not limited to, instructional staff, operations staff, and any school support staff. This ensures that shared staff, including operations, impact school retention. The formula is as follows: <span class="math display">\[\text{School Retention} = 1-\frac{\text{School Leavers} + 0.5(\text{Shared Staff Leavers})}{\text{School Headcount} + 0.5(\text{Shared Staff Headcount})} \]</span></li>
 </ul>
 <p>All IDEA Public Schools Teacher Retention</p>
 <ul>
-<li><p>“Headcount” is defined as the sum of all full-time, permanent employees in the Teacher Job Group who work at IDEA Public Schools between the start of their 2024-25 Work Calendar and 08/14/2025.</p>
+<li>“Headcount” is defined as the sum of all full-time, permanent employees in the Teacher Job Group who work at IDEA Public Schools between the start of their 2024-25 Work Calendar and 08/14/2025.
 <ul>
-<li><p>Instructional staff (teachers and co-teachers/instructional support) and campus administrative professionals will count toward the school at which they work, not the campus.</p></li>
-<li><p>Campus support staff (i.e.&nbsp;administrative assistants, testing coordinators, 21st century site coordinators) will count toward campus and school retention if they are shared and toward school retention if they are not shared.</p></li>
+<li>Instructional staff (teachers and co-teachers/instructional support) and campus administrative professionals will count toward the school at which they work, not the campus.</li>
+<li>Campus support staff (i.e.&nbsp;administrative assistants, testing coordinators, 21st century site coordinators) will count toward campus and school retention if they are shared and toward school retention if they are not shared.</li>
 </ul></li>
-<li><p>“Leaver” is defined as the sum of all full-time, permanent Teachers who have an effective exit date between the first day of their 24-25 School Year work calendar (even if they participate in summer school or summer professional development) and 08/14/2025.</p>
+<li>“Leaver” is defined as the sum of all full-time, permanent Teachers who have an effective exit date between the first day of their 24-25 School Year work calendar (even if they participate in summer school or summer professional development) and 08/14/2025.
 <ul>
-<li><p>All teachers who leave prior 08/15/2025 will be coded with an exit date prior to 08/15/2025 to ensure they do not count toward 2025-2026 retention.</p>
+<li>All teachers who leave prior 08/15/2025 will be coded with an exit date prior to 08/15/2025 to ensure they do not count toward 2025-2026 retention.
 <ul>
 <li>Co-teachers and Founding Teacher Fellows do not count toward Teacher retention, to better align with PEIMS Teacher reporting, but do count toward All Staff retention. These roles will be included in the school All Staff retention but not in the school Teacher retention.</li>
 </ul></li>
 </ul></li>
-<li><p>The teacher retention year begins on the first day of their work calendar, not the first day of summer PD. If a returning teacher no-shows for the first days of all-staff BOY PD, even if s/he were part of summer PD, s/eh will be counted as a leaver for the previous school year.</p>
+<li>The teacher retention year begins on the first day of their work calendar, not the first day of summer PD. If a returning teacher no-shows for the first days of all-staff BOY PD, even if s/he were part of summer PD, s/eh will be counted as a leaver for the previous school year.
 <ul>
-<li><p>If a New Hire is a no-show on the first day of their work calendar, they should be coded as OT02 – Employee did not start, which will exclude them from the count.o If an employee shows up for the first day of their work calendar and subsequently leaves, they will count toward retention that year.</p></li>
-<li><p>Flex Teachers and Flex Co-Teachers count toward the retention for the Region in which they were hired, unless they have officially transitioned to a permanent campus-based teaching role.</p></li>
+<li>If a New Hire is a no-show on the first day of their work calendar, they should be coded as OT02 – Employee did not start, which will exclude them from the count.o If an employee shows up for the first day of their work calendar and subsequently leaves, they will count toward retention that year.</li>
+<li>Flex Teachers and Flex Co-Teachers count toward the retention for the Region in which they were hired, unless they have officially transitioned to a permanent campus-based teaching role.</li>
 </ul></li>
-<li><p>Flex Teachers and Flex Co-Teachers will not count toward the retention for the home campus at which they are based before they are assigned to a permanent campus-based role.</p></li>
+<li>Flex Teachers and Flex Co-Teachers will not count toward the retention for the home campus at which they are based before they are assigned to a permanent campus-based role.</li>
 </ul>
+</blockquote>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-RetSOP2023" class="csl-entry" role="listitem">
+IDEA Public Schools. 2023. <span>“2023-2024 Staff Retention Calculation Standard Operating Procedure.”</span> <a href="https://ideapublicschoolsorg.sharepoint.com/:b:/r/HumanAssets/Shared%20Documents/2023-24%20Staff%20Retention%20SOP_FINAL_08.12.24.pdf?csf=1&amp;web=1&amp;e=Xkh56Z">https://ideapublicschoolsorg.sharepoint.com/:b:/r/HumanAssets/Shared%20Documents/2023-24%20Staff%20Retention%20SOP_FINAL_08.12.24.pdf?csf=1&amp;web=1&amp;e=Xkh56Z</a>.
+</div>
+<div id="ref-RetSOP2024" class="csl-entry" role="listitem">
+———. 2024. <span>“2024-2025 Staff Retention Calculation Standard Operating Procedure.”</span> <a href="https://ideapublicschoolsorg.sharepoint.com/HumanAssets/SiteAssets/SitePages/Retention-Policy/24-25-TX_Staff-Retention-SOP_Final_09032024.pdf?web=1">https://ideapublicschoolsorg.sharepoint.com/HumanAssets/SiteAssets/SitePages/Retention-Policy/24-25-TX_Staff-Retention-SOP_Final_09032024.pdf?web=1</a>.
+</div>
+</div>
+</section>
 </section>
 
 </main> <!-- /main -->
