@@ -1,0 +1,50 @@
+# Leadership and Headquarters Bandwidth {#sec-05HQBand}
+
+## Percentage of Leaders 3+ years in role {#sec-05Leaders}
+
+### Percentage of executive directors 3+ years in role
+
+### Percentage of principals 3+ years in role
+
+### Percentage of APIs 3+ years in role
+
+### Notes & Exclusions
+
+### Source
+
+## API vacancy rate (expected + new) {#sec-05APIVacancy}
+
+### Notes & Exclusions
+
+### Source
+
+## Number of CAP grads (2-year) {#sec-05CAPGrads}
+
+### Notes & Exclusions
+
+### Source
+
+The STAAR data includes STAAR and high school level End-of-Course (EOC) assessments stored in IDEA's data warehouse[@STAAR].
+
+```{r STAAR}
+#| eval: false
+#| include: true
+
+STAAR <- get_table(.table_name = "STAAR", .database_name = "Dashboard",
+                   .schema = "dbo", .server_name = "RGVPDRA-DASQL") %>%
+  filter(
+    ## Includes STAAR but not STAAR Alt 2 
+      TestVersion == "S", 
+    ## Includes Scored assessments only
+      ScoreCode == "S", 
+    ## Includes Math and English 
+    (SubjectCode == "Math" |
+     SubjectCode == "Reading" |
+     SubjectCode == "Algebra I" |
+     SubjectCode == "English I" |
+     SubjectCode == "English II"),
+    ## Select desired school years
+    (SchoolYear == "2024-2025" |
+     SchoolYear == "2023-2024")
+  )
+```

@@ -1,14 +1,19 @@
 project:
   type: book
-
+  
 book:
-  title: "ScorecardDocumentation"
-  author: "Norah Jones"
-  date: "9/16/2025"
+  title: "IDEA Growth Scorecard Documentation"
+  author: "Hilary Doe"
+  date: "9/11/2025"
+  cover-image: TitlePage.png
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
+    - 01-SchoolPerformance.qmd
+    - 02-FinancialViability.qmd
+    - 03-CapitalCapacity.qmd
+    - 04-TeacherSupply.qmd
+    - 05-Leadership.qmd
+    - 06-Enrollment.qmd
     - references.qmd
 
 bibliography: references.bib
@@ -20,6 +25,10 @@ format:
       - brand
   pdf:
     documentclass: scrreprt
+    include-in-header: 
+      text: |
+        \usepackage{makeidx}
+        \makeindex
 
 editor: visual
 
