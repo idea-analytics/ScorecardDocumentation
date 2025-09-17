@@ -289,13 +289,12 @@ window.Quarto = {
 </header>
 
 
-<p>Important to note the difference between enrollment goals and capacity!</p>
+<p>Before explaining each of the metrics and their sources in detail, it is important to note that although two of the metrics within Enrollment Readiness / Student Demand may sound similar, they are actually quite different. Although enrollment goals may be similar to capacity at some schools and campuses, in many cases they differ in meaningful ways.</p>
+<p>Enrollment targets vary by grade level and location, and are specific to an individual campus and context. Capacity, however, is based on a consistent estimate based on the current grade levels offered within a school. It is meant to measure how many students a school is currently educating versus how much they could this year. Enrollment goals may be well below the capacity for a given school or campus.</p>
 <section id="sec-06Goal" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="sec-06Goal"><span class="header-section-number">6.1</span> Percentage Meeting Enrollment Goal</h2>
 <p>Each year, each IDEA school has an assigned enrollment target or goal for each grade level they enroll, set by the Enrollment and School Launch Team. [Add information about who sets these and how].</p>
-<p>STOP… IS this right!!!????</p>
-<p>For this metric, a unit (grade level, school, campus, or region) is considered to have met its enrollment goal if the total number of students enrolled on the First Day Of Persistence (FDOP) is at or above the total enrollment goal for that unit.</p>
-<p><span class="math display">\[{\% \text{ Meeting Enrollment Goal}} = \frac{\# \text{ of Students Enrolled at Unit at FDOP}}{\text{Total Enrollment Goal for Unit}}*100\]</span></p>
+<p>For this metric, a single unit (grade level, school, campus, or region) is considered to have met its enrollment goal if the total number of students enrolled on the First Day Of Persistence (FDOP) is at or above the total enrollment goal for that unit.</p>
 <p>If one school is under-enrolled but another is over-enrolled, a full campus may still meet its overall enrollment goal. For example, at FDOP 2025, enrollment at Austin Health Professions Academy was 13 students below its target (not meeting enrollment goal), but Austin Health Professions College Prep was 46 above its target (meeting enrollment goal). Therefore, the full Austin Health Professions campus was 33 students above its target and considered to be meeting its enrollment goal.</p>
 <table class="caption-top table">
 <caption>Example of Under- and Over-Enrollment at Individual Schools with a Campus Meeting Enrollment Goal</caption>
@@ -328,6 +327,10 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
+<p>The percentage meeting enrollment goal within a unit is based on the number of sub-units, rather than the total number of students and enrollment target. For example, percentage of schools within a region meeting enrollment goal is calculated as:</p>
+<p><span class="math display">\[{\% \text{ Schools Meeting Enrollment Goal}} = \frac{\# \text{ of Schools Meeting Enrollment Goal}}{\text{Total } \# \text{ of Schools within Region}}*100\]</span></p>
+<p>Whereas the percentage of campuses within a region meeting enrollment goal is calculated as:</p>
+<p><span class="math display">\[{\% \text{ Campuses Meeting Enrollment Goal}} = \frac{\# \text{ of Campuses Meeting Enrollment Goal}}{\text{Total } \# \text{ of Campuses within Region}}*100\]</span></p>
 <section id="notes-exclusions" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="notes-exclusions"><span class="header-section-number">6.1.1</span> Notes &amp; Exclusions</h3>
 <ul>
@@ -338,7 +341,7 @@ window.Quarto = {
 <h3 data-number="6.1.2" class="anchored" data-anchor-id="source"><span class="header-section-number">6.1.2</span> Source</h3>
 <p>The enrollment metric uses both enrollment targets and attendance data from the data warehouse <span class="citation" data-cites="EnrollTarg24 EnrollTarg25 EnrollData">(<a href="references.html#ref-EnrollTarg24" role="doc-biblioref">IDEA Public Schools 2024</a>, <a href="references.html#ref-EnrollTarg25" role="doc-biblioref">2025</a>; <a href="references.html#ref-EnrollData" role="doc-biblioref">IDEA Public Schools Data Warehouse 2025a</a>)</span>.</p>
 <p>Because the enrollment data includes an data includes an enormous amount of data, one row for every day for each student, it takes a very long time to pull from the warehouse. Therefore, I built a few steps into the code that greatly increases the code length, but greatly decreases the time it takes to pull the data for us.</p>
-<p>First we pull only a few variables from the enrollment details table for the academic years of interest to help us determine the appropriate First Day of Persistence (FDOP) for each school. FDOP is the 11th day of school, which unless a holiday interferes, should be 14 days after the First Day of School (FDOS). We use the FDOS to determine FDOP and then use that to create an incredibly long filter we can use to pull enrollment data only for each individual school’s FDOP.</p>
+<p>First, we pull only a few variables from the enrollment details table for the academic years of interest to help us determine the appropriate First Day of Persistence (FDOP) for each school. FDOP is the 11th day of school, which typically14 calendar days after the First Day of School (FDOS). We use the FDOS to determine FDOP and then use that to create an incredibly long filter we can use to pull enrollment data only for each individual school’s FDOP.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Connect to Enrollment</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>enrollment_conn1 <span class="ot">&lt;-</span> <span class="fu">get_table</span>(<span class="at">.table_name =</span> <span class="st">"EnrollmentDetails"</span>,</span>
@@ -386,7 +389,7 @@ window.Quarto = {
 <span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>list </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>I copy and paste the list into Microsoft Word, add paragraph breaks after | for formatting, and then copy and paste that as a filter when pulling full enrollment data. The result is a filter that is hundreds of lines long.</p>
+<p>I copy and paste the list into Microsoft Word, add paragraph breaks after “|” for formatting, and then copy and paste that as a filter when pulling full enrollment data. The result is a filter that is hundreds of lines long.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>enrollment_conn <span class="ot">&lt;-</span> <span class="fu">get_table</span>(<span class="at">.table_name =</span> <span class="st">"EnrollmentDetails"</span>,</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">.schema =</span> <span class="st">"Dashboard"</span>,</span>
@@ -408,9 +411,9 @@ window.Quarto = {
 <h2 data-number="6.2" class="anchored" data-anchor-id="sec-06Persist"><span class="header-section-number">6.2</span> Student Annual Persistence</h2>
 <p>According to the RAP Manual <span class="citation" data-cites="RAPMan">(<a href="references.html#ref-RAPMan" role="doc-biblioref">IDEA RAP Team, n.d.</a>)</span>,</p>
 <blockquote class="blockquote">
-<p>Student Persistence is one of the most important measures that Chiefs, VPs, and School Leaders are always monitoring to understand our efforts in providing high quality services to our students and families. In order for a student to actualize the benefits of IDEA, the student must persist through high school.&nbsp;We say a student persisted if the student was enrolled and attended school for the entire academic school year, returned the following school year, and was enrolled and attending on the Monday after the first week of school (the First Day of Persistence, FDOP). In other words, the student was enrolled and attended school on the “First Day of Persistence” (FDOP) for two consecutive years. The only exception to this are New Students that enroll after the FDOP, attend the entire year, return the following year, and are enrolled and attending for FDOP. These new students were not enrolled and attending for two consecutive FDOPs because they enrolled after the first FDOP but would be considered as persisting.</p>
+<p>Student Persistence is one of the most important measures that Chiefs, VPs, and School Leaders are always monitoring to understand our efforts in providing high quality services to our students and families. In order for a student to actualize the benefits of IDEA, the student must persist through high school.&nbsp;We say a student persisted if the student was enrolled and attended school for the entire academic school year, returned the following school year, and was enrolled and attending on [the “First Day of Persistence”]. In other words, the student was enrolled and attended school on the “First Day of Persistence” (FDOP) for two consecutive years. The only exception to this are New Students that enroll after the FDOP, attend the entire year, return the following year, and are enrolled and attending for FDOP. These new students were not enrolled and attending for two consecutive FDOPs because they enrolled after the first FDOP but would be considered as persisting.</p>
 </blockquote>
-<p>Persistence data can be found in a few different places. Official persistence data is stored in the Data Warehouse in the Fact.PersistenceCode and Fact.PersistenceCodeHistorical tables. These include clear indicators of whether a student is considered to be a Leaver. However, at the beginning of the school year, when we are likely to update the persistence metrics for the Growth Scorecards, the current school years’ persistence data may not yet be in the PersistenceCode table. In Fall of 2025, we had to estimate persistence for the current academic year using attendance data.</p>
+<p>Persistence data can be found in a few different places. Official persistence data is stored in the Data Warehouse in the Fact.PersistenceCode and Fact.PersistenceCodeHistorical tables. These include clear indicators of whether a student is considered to be a Leaver, a student leaving before FDOP. However, at the beginning of the school year, when we are likely to update the persistence metrics for the Growth Scorecards, the current school years’ persistence data may not yet be in the PersistenceCode table. In Fall of 2025, we had to estimate persistence for the current academic year using attendance data.</p>
 <p>According to the RAP Manual, there are two possible formulas for calculating persistence <span class="citation" data-cites="RAPMan">(<a href="references.html#ref-RAPMan" role="doc-biblioref">IDEA RAP Team, n.d.</a>)</span>, which provide slightly different estimates of persistence:</p>
 <p><span class="math display">\[
 1)\text{ } \% \text{ Persistence} = \left(1-\frac{\# \text{ Leavers}}{\text{Total } \# \text{ of Students}}\right)*100
@@ -426,11 +429,50 @@ window.Quarto = {
 <section id="notes-exclusions-1" class="level3" data-number="6.2.1">
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="notes-exclusions-1"><span class="header-section-number">6.2.1</span> Notes &amp; Exclusions</h3>
 <ul>
-<li>Students enrolled in 12th grade in Year 1 who do not return for Year 2 are excluded from the calculations, from both the numerator and denominator.</li>
+<li>Across all options for persistence calculations, students enrolled in 12th grade in Year 1 who do not return for Year 2 are excluded from the calculations (from both the numerator and denominator).</li>
+<li>Two IDEA schools, Travis Academy and A. W. Brown Academy, currently have PreK classes and enrollment goals. We have excluded PreK students and enrollment goals from this metric.</li>
+<li>Persistence calculated from the official persistence tables is calculated differently than estimates calculated from attendance data. The later does <em>not</em> account for students who enrolled after FDOP in year 1 (New Entries). Therefore, student persistence calculated from the persistence tables are not directly comparable to student persistence estimated from attendance data.</li>
 </ul>
 </section>
 <section id="source-1" class="level3" data-number="6.2.2">
 <h3 data-number="6.2.2" class="anchored" data-anchor-id="source-1"><span class="header-section-number">6.2.2</span> Source</h3>
+<p>As described above, there are multiple different sources and calculation possibilities for student persistence. Ideally, we would use calculations from the official persistence tables (current or historical), but persistence tables are not always current at the beginning of the school year.</p>
+<p>For the Fall 2025 scorecard, we used estimates from the attendance data. The code does, however, also pull the previous year’s official persistence data and create a tab in the Excel output workbook with the relevant data.</p>
+<p>Like with enrollment data, the attendance data includes a row for each day for each student. We take a similar approach as describe in <a href="#sec-06Goal" class="quarto-xref"><span>Section 6.1</span></a> with creating a long filter to more efficiently pull the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using attendence on FDOP</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>attend_conn <span class="ot">&lt;-</span> <span class="fu">get_table</span>(<span class="at">.table_name =</span> <span class="st">"Students"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">.schema =</span> <span class="st">"Attendance"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">.database_name =</span> <span class="st">"PROD1"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">.server_name =</span> <span class="st">"RGVPDSD-DWPRD1"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Pull data for FDOP</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>attend_fdop <span class="ot">&lt;-</span> attend_conn <span class="sc">%&gt;%</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(AcademicYear,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>         schoolnumber,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>         StateSchoolNumber,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>         SchoolShortName,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>         SchoolType,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>         RegionDescription,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>         GradeLevelID,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>         AttStudentKey,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>         StudentNumber,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>         WeekNumber,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>         DateNumber,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>         AttDate,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>         Membership,</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>         Absences,</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>         ContinuouslyEnrolled,</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>         PersistenceType,</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>         Enroll) <span class="sc">%&gt;%</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(schoolnumber <span class="sc">==</span> <span class="dv">137</span> <span class="sc">&amp;</span> AttDate <span class="sc">==</span> <span class="st">'2024-08-22'</span><span class="sc">|</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>         schoolnumber <span class="sc">==</span> <span class="dv">108807123</span> <span class="sc">&amp;</span> AttDate <span class="sc">==</span> <span class="st">'2024-08-27'</span><span class="sc">|</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>         schoolnumber <span class="sc">==</span> <span class="dv">108807185</span> <span class="sc">&amp;</span> AttDate <span class="sc">==</span> <span class="st">'2024-08-19'</span><span class="sc">|</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>         <span class="co"># ..</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>         schoolnumber <span class="sc">==</span> <span class="dv">108807103</span> <span class="sc">&amp;</span> AttDate <span class="sc">==</span> <span class="st">'2025-08-28'</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="sec-06Cap" class="level2" data-number="6.3">
@@ -445,23 +487,23 @@ window.Quarto = {
 <h3 data-number="6.3.2" class="anchored" data-anchor-id="source-2"><span class="header-section-number">6.3.2</span> Source</h3>
 <p>The STAAR data includes STAAR and high school level End-of-Course (EOC) assessments stored in IDEA’s data warehouse<span class="citation" data-cites="STAAR">(<a href="references.html#ref-STAAR" role="doc-biblioref">IDEA Public Schools Data Warehouse 2025b</a>)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Connect to Enrollment</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>enrollment_conn1 <span class="ot">&lt;-</span> <span class="fu">get_table</span>(<span class="at">.table_name =</span> <span class="st">"EnrollmentDetails"</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">.schema =</span> <span class="st">"Dashboard"</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">.database_name =</span> <span class="st">"Enrollment"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">.server_name =</span> <span class="st">"RGVPDSD-DWPRD1"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    SchoolNumber, </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    AcademicYear, </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    FDOS, </span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    Instance</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    AcademicYear <span class="sc">==</span> <span class="st">"2024-2025"</span> <span class="sc">|</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    AcademicYear <span class="sc">==</span> <span class="st">"2025-2026"</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Connect to Enrollment</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>enrollment_conn1 <span class="ot">&lt;-</span> <span class="fu">get_table</span>(<span class="at">.table_name =</span> <span class="st">"EnrollmentDetails"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">.schema =</span> <span class="st">"Dashboard"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">.database_name =</span> <span class="st">"Enrollment"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">.server_name =</span> <span class="st">"RGVPDSD-DWPRD1"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    SchoolNumber, </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    AcademicYear, </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    FDOS, </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    Instance</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    AcademicYear <span class="sc">==</span> <span class="st">"2024-2025"</span> <span class="sc">|</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    AcademicYear <span class="sc">==</span> <span class="st">"2025-2026"</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
