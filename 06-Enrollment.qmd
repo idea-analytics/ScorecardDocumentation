@@ -6,19 +6,23 @@ Important to note the difference between enrollment goals and capacity!
 
 Each year, each IDEA school has an assigned enrollment target or goal for each grade level they enroll, set by the Enrollment and School Launch Team. \[Add information about who sets these and how\].
 
-For this metric, a unit (grade level, school, campus, or region) is considered to have met their enrollment goal if the total number of students enrolled on the First Day Of Persistence (FDOP) is at or above the total enrollment goal for that unit.
+For this metric, a unit (grade level, school, campus, or region) is considered to have met its enrollment goal if the total number of students enrolled on the First Day Of Persistence (FDOP) is at or above the total enrollment goal for that unit.
 
-$${\text{Percentage Meeting Enrollment Goal}} = \frac{\text{Number of Students Enrolled at Unit at FDOP}}{\text{Total Enrollment Goal for Unit}}$$
+$${\% \text{ Meeting Enrollment Goal}} = \frac{\# \text{ of Students Enrolled at Unit at FDOP}}{\text{Total Enrollment Goal for Unit}}$$
 
 If one school is under-enrolled but another is over-enrolled, a full campus may still meet its overall enrollment goal. For example, at FDOP 2025, enrollment at Austin Health Professions Academy was 13 students below its target (not meeting enrollment goal), but Austin Health Professions College Prep was 46 above its target (meeting enrollment goal). Therefore, the full Austin Health Professions campus was 33 students above its target and considered to be meeting its enrollment goal.
 
-| Unit | School Enrollment at FDOP | School- Target Enrollment | Meets Goal? |
-|:--:|:--:|:--:|:--:|
+| Unit | Enrollment at FDOP | Target Enrollment | Meets Goal? |
+|:----------------:|:----------------:|:----------------:|:----------------:|
 | Health Professions Academy | 335 | 348 | No |
 | Health Professions College Prep | 434 | 388 | Yes |
 | **Health Professions Campus Total** | **769** | **736** | **Yes** |
 
+: Example of Under- and Over-Enrollment at Individual Schools with a Campus Meeting Enrollment Goal
+
 ### Notes & Exclusions
+
+-   Two IDEA schools enroll PreK
 
 ### Source
 

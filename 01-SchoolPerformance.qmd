@@ -8,7 +8,7 @@ The State of Texas Assessments of Academic Readiness (STAAR) assessments are Tex
 
 Percentage of students Meeting performance standards for Math and ELA are calculated at the entity, region, and campus level as:
 
-$$ \text{Percent Meeting Standards} = \frac{\text{Number of Students Meeting in Subject}}{\text{Number of Students with Scored STAAR/EOC for Subject}}$$
+$$\% \text{ Meeting Standards} = \frac{\# \text{ of Students Meeting in Subject}}{\# \text{ of Students with Scored STAAR or EOC for Subject}}*100$$
 
 ### Notes & Exclusions
 
@@ -59,7 +59,7 @@ Each district and campus receives an A-F letter grade for each of the three doma
 
 ### Percentage of Schools Rated A & B and D & F
 
-For the percentage of schools with specific letter grade accountability ratings, each individual school (Academy, College Prep) has its own rating. The metrics are calculated at the entity and region level as follows: $${\text{Percent of Schools Rated A or B}} = \frac{(\text{Number of Schools Rated A}) + (\text{Number of Schools Rated B})}{\text{Total Number of Schools with Rating in Region}}$$ $${\text{Percent of Schools Rated D or F}} = \frac{(\text{Number of Schools Rated D}) + (\text{Number of Schools Rated F})}{\text{Total Number of Schools with Rating in Region}}$$
+For the percentage of schools with specific letter grade accountability ratings, each individual school (Academy, College Prep) has its own rating. The metrics are calculated at the entity and region level as follows: $${\% \text{ of Schools Rated A or B}} = \frac{(\# \text{ of Schools Rated A}) + (\# \text{ of Schools Rated B})}{\text{Total } \# \text{ of Schools with Rating in Region}}*100$$ $${\% \text{ of Schools Rated D or F}} = \frac{(\# \text{ of Schools Rated D}) + (\# \text{ of Schools Rated F})}{\text{Total } \# \text{ of Schools with Rating in Region}}*100$$
 
 ### Multi-Year Failure {#sec-Fail}
 
@@ -67,7 +67,7 @@ For the multi-year failure metric, we considered schools with an overall rating 
 
 We calculated the number and percentage of schools in each region multi-year filaure for the 2024-2025 year.
 
-$${\text{Percent of Schools with Multi-Year Failure}} = \frac{\text{Number of Schools with Multi-Year Failure}}{\text{Total Number of Schools with Rating in Region}}$$
+$${\% \text{ of Schools with Multi-Year Failure}} = \frac{\# \text{ of Schools with Multi-Year Failure}}{\text{Total } \# \text{ of Schools with Rating in Region}}*100$$
 
 Individual schools are marked has having a previous had multi-year failure if the school had a rating \<70 for any two or more subsequently rated years prior to 2024-2025.
 

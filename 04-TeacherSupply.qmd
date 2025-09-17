@@ -34,7 +34,7 @@ The following details are taken directly from the 2024-2025 Staff Retention Stan
 
 > Staff Retention Definitions
 >
-> -   The formula for calculating retention is as follows: $$\text{Percent Retained} = \frac{1-\text{Leavers}}{\text{Headcount}}*100$$
+> -   The formula for calculating retention is as follows: $$\text{Retained} = \frac{1-\text{Leavers}}{\text{Headcount}}*100$$
 > -   The 2024-25 Staff Retention Year is defined as 07/1/2024 – 08/14/2025 (specific employee categories may have a different start to their Staff Retention Year based on their work calendar, but will not be earlier than 07/01/2024 – details below).
 > -   “Headcount” is defined as the sum of all full-time, permanent employees who worked at IDEA Public Schools between 07/1/2024 and 08/14/2025. Examples of staff job groups that fall into this category are Administrative Professionals, Campus Administrative Professionals, Clerical Technical, Instructional Support, Teachers, and Manual Trades.
 >     -   Retention includes any staff member who is classified as full-time, permanent staff, including partial FTE staff. Descriptions of the employee classifications can be found in the Employee Handbook.
