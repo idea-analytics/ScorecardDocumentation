@@ -13,7 +13,7 @@ $${\% \text{ Meeting Enrollment Goal}} = \frac{\# \text{ of Students Enrolled at
 If one school is under-enrolled but another is over-enrolled, a full campus may still meet its overall enrollment goal. For example, at FDOP 2025, enrollment at Austin Health Professions Academy was 13 students below its target (not meeting enrollment goal), but Austin Health Professions College Prep was 46 above its target (meeting enrollment goal). Therefore, the full Austin Health Professions campus was 33 students above its target and considered to be meeting its enrollment goal.
 
 | Unit | Enrollment at FDOP | Target Enrollment | Meets Goal? |
-|:----------------:|:----------------:|:----------------:|:----------------:|
+|:--:|:--:|:--:|:--:|
 | Health Professions Academy | 335 | 348 | No |
 | Health Professions College Prep | 434 | 388 | Yes |
 | **Health Professions Campus Total** | **769** | **736** | **Yes** |
