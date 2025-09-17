@@ -308,23 +308,26 @@ window.Quarto = {
 <h3 data-number="1.1.2" class="anchored" data-anchor-id="source"><span class="header-section-number">1.1.2</span> Source</h3>
 <p>The STAAR data includes STAAR and high school level End-of-Course (EOC) assessments stored in IDEA’s data warehouse<span class="citation" data-cites="STAAR">(<a href="references.html#ref-STAAR" role="doc-biblioref">IDEA Public Schools Data Warehouse 2025</a>)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>STAAR <span class="ot">&lt;-</span> <span class="fu">get_table</span>(<span class="at">.table_name =</span> <span class="st">"STAAR"</span>, <span class="at">.database_name =</span> <span class="st">"Dashboard"</span>,</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">.schema =</span> <span class="st">"dbo"</span>, <span class="at">.server_name =</span> <span class="st">"RGVPDRA-DASQL"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Includes STAAR but not STAAR Alt 2 </span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      TestVersion <span class="sc">==</span> <span class="st">"S"</span>, </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Includes Scored assessments only</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>      ScoreCode <span class="sc">==</span> <span class="st">"S"</span>, </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Includes Math and English </span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    (SubjectCode <span class="sc">==</span> <span class="st">"Math"</span> <span class="sc">|</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>     SubjectCode <span class="sc">==</span> <span class="st">"Reading"</span> <span class="sc">|</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>     SubjectCode <span class="sc">==</span> <span class="st">"Algebra I"</span> <span class="sc">|</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>     SubjectCode <span class="sc">==</span> <span class="st">"English I"</span> <span class="sc">|</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>     SubjectCode <span class="sc">==</span> <span class="st">"English II"</span>),</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Select desired school years</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    (SchoolYear <span class="sc">==</span> <span class="st">"2024-2025"</span> <span class="sc">|</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>     SchoolYear <span class="sc">==</span> <span class="st">"2023-2024"</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>STAAR <span class="ot">&lt;-</span> <span class="fu">get_table</span>(<span class="at">.table_name =</span> <span class="st">"STAAR"</span>, </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">.database_name =</span> <span class="st">"Dashboard"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">.schema =</span> <span class="st">"dbo"</span>, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">.server_name =</span> <span class="st">"RGVPDRA-DASQL"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                  ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Includes STAAR but not STAAR Alt 2 </span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>      TestVersion <span class="sc">==</span> <span class="st">"S"</span>, </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Includes Scored assessments only</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      ScoreCode <span class="sc">==</span> <span class="st">"S"</span>, </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Includes Math and English </span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    (SubjectCode <span class="sc">==</span> <span class="st">"Math"</span> <span class="sc">|</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>     SubjectCode <span class="sc">==</span> <span class="st">"Reading"</span> <span class="sc">|</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>     SubjectCode <span class="sc">==</span> <span class="st">"Algebra I"</span> <span class="sc">|</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>     SubjectCode <span class="sc">==</span> <span class="st">"English I"</span> <span class="sc">|</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>     SubjectCode <span class="sc">==</span> <span class="st">"English II"</span>),</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Select desired school years</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    (SchoolYear <span class="sc">==</span> <span class="st">"2024-2025"</span> <span class="sc">|</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>     SchoolYear <span class="sc">==</span> <span class="st">"2023-2024"</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
