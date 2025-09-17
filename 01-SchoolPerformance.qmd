@@ -28,8 +28,11 @@ The STAAR data includes STAAR and high school level End-of-Course (EOC) assessme
 #| eval: false
 #| include: true
 
-STAAR <- get_table(.table_name = "STAAR", .database_name = "Dashboard",
-                   .schema = "dbo", .server_name = "RGVPDRA-DASQL") %>%
+STAAR <- get_table(.table_name = "STAAR", 
+                   .database_name = "Dashboard",
+                   .schema = "dbo", 
+                   .server_name = "RGVPDRA-DASQL"
+                  ) %>%
   filter(
     ## Includes STAAR but not STAAR Alt 2 
       TestVersion == "S", 

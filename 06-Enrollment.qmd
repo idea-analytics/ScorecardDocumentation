@@ -6,9 +6,11 @@ Important to note the difference between enrollment goals and capacity!
 
 Each year, each IDEA school has an assigned enrollment target or goal for each grade level they enroll, set by the Enrollment and School Launch Team. \[Add information about who sets these and how\].
 
+STOP... IS this right!!!????
+
 For this metric, a unit (grade level, school, campus, or region) is considered to have met its enrollment goal if the total number of students enrolled on the First Day Of Persistence (FDOP) is at or above the total enrollment goal for that unit.
 
-$${\% \text{ Meeting Enrollment Goal}} = \frac{\# \text{ of Students Enrolled at Unit at FDOP}}{\text{Total Enrollment Goal for Unit}}$$
+$${\% \text{ Meeting Enrollment Goal}} = \frac{\# \text{ of Students Enrolled at Unit at FDOP}}{\text{Total Enrollment Goal for Unit}}*100$$
 
 If one school is under-enrolled but another is over-enrolled, a full campus may still meet its overall enrollment goal. For example, at FDOP 2025, enrollment at Austin Health Professions Academy was 13 students below its target (not meeting enrollment goal), but Austin Health Professions College Prep was 46 above its target (meeting enrollment goal). Therefore, the full Austin Health Professions campus was 33 students above its target and considered to be meeting its enrollment goal.
 
@@ -22,13 +24,127 @@ If one school is under-enrolled but another is over-enrolled, a full campus may 
 
 ### Notes & Exclusions
 
--   Two IDEA schools enroll PreK
+-   Two IDEA schools, Travis Academy and A. W. Brown Academy, currently have PreK classes and enrollment goals. We have excluded PreK students and enrollment goals from this metric.
 
 ### Source
 
-## Percentage Student Annual Persistence {#sec-06Persist}
+The enrollment metric uses both enrollment targets and attendance data from the data warehouse [@EnrollTarg24; @EnrollTarg25; @EnrollData].
+
+Because the enrollment data includes an data includes an enormous amount of data, one row for every day for each student, it takes a very long time to pull from the warehouse. Therefore, I built a few steps into the code that greatly increases the code length, but greatly decreases the time it takes to pull the data for us.
+
+First we pull only a few variables from the enrollment details table for the academic years of interest to help us determine the appropriate First Day of Persistence (FDOP) for each school. FDOP is the 11th day of school, which unless a holiday interferes, should be 14 days after the First Day of School (FDOS). We use the FDOS to determine FDOP and then use that to create an incredibly long filter we can use to pull enrollment data only for each individual school's FDOP.
+
+```{r Enroll}
+#| eval: false
+#| include: true
+
+
+## Connect to Enrollment
+enrollment_conn1 <- get_table(.table_name = "EnrollmentDetails",
+                              .schema = "Dashboard",
+                              .database_name = "Enrollment",
+                              .server_name = "RGVPDSD-DWPRD1"
+                             ) %>%
+  select(
+    SchoolNumber,
+    AcademicYear, 
+    FDOS, 
+    Instance
+  ) %>%
+  filter(
+    AcademicYear == "2024-2025" | 
+    AcademicYear == "2025-2026"
+  ) %>%
+  distinct() %>%
+  collect()
+
+
+## This creates a list we can copy and paste as a REALLY long filter.
+enrollment_conn1 <- enrollment_conn1 %>%
+  filter(str_detect(Instance, "TX")) %>%
+  mutate(
+    FDOP = case_when(
+      FDOS == "2024-08-05"  ~ "2024-08-19",
+      FDOS == "2024-08-08"  ~ "2024-08-22",
+      FDOS == "2024-08-12"  ~ "2024-08-26",
+      FDOS == "2024-08-13"  ~ "2024-08-27",
+      FDOS == "2024-08-15"  ~ "2024-08-29",
+      FDOS == "2025-08-08"  ~ "2025-08-22",
+      FDOS == "2025-08-14"  ~ "2025-08-28",
+      FDOS == "2025-08-13"  ~ "2025-08-27",
+      FDOS == "2025-08-04"  ~ "2025-08-18",
+      FDOS == "2025-08-11"  ~ "2025-08-25",
+      FDOS == "2025-08-07"  ~ "2025-08-21"
+    ),
+    filter = paste0("schoolnumber == ", SchoolNumber, " & AttDate == '", FDOP, "'")
+  ) %>%
+  select(filter) %>%
+  distinct()
+
+list <- paste(enrollment_conn1$filter, collapse = "|")
+
+list 
+
+```
+
+I copy and paste the list into Microsoft Word, add paragraph breaks after \| for formatting, and then copy and paste that as a filter when pulling full enrollment data. The result is a filter that is hundreds of lines long.
+
+```{r Enroll3}
+#| eval: false
+#| include: true
+
+
+enrollment_conn <- get_table(.table_name = "EnrollmentDetails",
+                             .schema = "Dashboard",
+                             .database_name = "Enrollment",
+                             .server_name = "RGVPDSD-DWPRD1"
+                            ) %>%
+  filter(SchoolNumber == 109907025 & AttDate == '2024-08-29'|
+         SchoolNumber == 108807043 & AttDate == '2024-08-29' |
+         SchoolNumber == 108807028 & AttDate == '2024-08-27' |
+         SchoolNumber == 109907018 & AttDate == '2025-08-28' | 
+         #...
+         SchoolNumber == 108807025 & AttDate == '2024-08-27'
+        ) %>% 
+
+```
+
+Once the appropriate data has been pulled into R, the code sums the total number of students enrolled within each unit on FDOP (`Membership == 1` , indicating that the student was enrolled as a full-time student on that day) and compares to the enrollment targets for that unit.
+
+## Student Annual Persistence {#sec-06Persist}
+
+According to the RAP Manual [@RAPMan],
+
+> Student Persistence is one of the most important measures that Chiefs, VPs, and School Leaders are always monitoring to understand our efforts in providing high quality services to our students and families. In order for a student to actualize the benefits of IDEA, the student must persist through high school. We say a student persisted if the student was enrolled and attended school for the entire academic school year, returned the following school year, and was enrolled and attending on the Monday after the first week of school (the First Day of Persistence, FDOP). In other words, the student was enrolled and attended school on the “First Day of Persistence” (FDOP) for two consecutive years. The only exception to this are New Students that enroll after the FDOP, attend the entire year, return the following year, and are enrolled and attending for FDOP. These new students were not enrolled and attending for two consecutive FDOPs because they enrolled after the first FDOP but would be considered as persisting.
+
+Persistence data can be found in a few different places. Official persistence data is stored in the Data Warehouse in the Fact.PersistenceCode and Fact.PersistenceCodeHistorical tables. These include clear indicators of whether a student is considered to be a Leaver. However, at the beginning of the school year, when we are likely to update the persistence metrics for the Growth Scorecards, the current school years' persistence data may not yet be in the PersistenceCode table. In Fall of 2025, we had to estimate persistence for the current academic year using attendance data.
+
+According to the RAP Manual, there are two possible formulas for calculating persistence [@RAPMan], which provide slightly different estimates of persistence:
+
+
+$$
+1)\text{ } \% \text{ Persistence} = \left(1-\frac{\# \text{ Leavers}}{\text{Total } \# \text{ of Students}}\right)*100 
+$$
+
+
+$$
+2)\text{ } \% \text{ Persistence} = \left(1-\frac{\# \text{ FDOPLeavers}}{(\# \text{ FDOP Enrolled}) + (\# \text{ of FDOP New Entries})}\right)*100
+$$
+
+
+For the Fall 2025 Growth Scorecards tracking persistence from 2023-2024 to 2024-2025, we used Equation 1.
+
+As stated above, when current data is not available from a persistence table, we must estimate student persistence using attendance data. This estimate is imperfect and does *not* account for students who enrolled after FDOP in year 1 (New Entries). Therefore, **student persistence calculated from the persistence tables are not directly comparable to student persistence estimated from attendance data.**
+
+
+$$
+\text{ } \% \text{ Persistence} = \left(1 - \frac{(\# \text{ Absent FDOP Year 2)} + (\#\text{ Not Enrolled on FDOP Year 2)}}{\# \text{ Present on FDOP Year 1}}\right)*100
+$$
+
 
 ### Notes & Exclusions
+
+-   Students enrolled in 12th grade in Year 1 who do not return for Year 2 are excluded from the calculations, from both the numerator and denominator.
 
 ### Source
 
@@ -36,29 +152,32 @@ If one school is under-enrolled but another is over-enrolled, a full campus may 
 
 ### Notes & Exclusions
 
+-   Two IDEA schools, Travis Academy and A. W. Brown Academy, currently have PreK classes and enrollment goals. We have excluded PreK students and enrollment goals from this metric.
+
 ### Source
 
 The STAAR data includes STAAR and high school level End-of-Course (EOC) assessments stored in IDEA's data warehouse[@STAAR].
 
-```{r STAAR}
+```{r capacity}
 #| eval: false
 #| include: true
 
-STAAR <- get_table(.table_name = "STAAR", .database_name = "Dashboard",
-                   .schema = "dbo", .server_name = "RGVPDRA-DASQL") %>%
+
+## Connect to Enrollment
+enrollment_conn1 <- get_table(.table_name = "EnrollmentDetails",
+                              .schema = "Dashboard",
+                              .database_name = "Enrollment",
+                              .server_name = "RGVPDSD-DWPRD1") %>%
+  select(
+    SchoolNumber, 
+    AcademicYear, 
+    FDOS, 
+    Instance
+  ) %>%
   filter(
-    ## Includes STAAR but not STAAR Alt 2 
-      TestVersion == "S", 
-    ## Includes Scored assessments only
-      ScoreCode == "S", 
-    ## Includes Math and English 
-    (SubjectCode == "Math" |
-     SubjectCode == "Reading" |
-     SubjectCode == "Algebra I" |
-     SubjectCode == "English I" |
-     SubjectCode == "English II"),
-    ## Select desired school years
-    (SchoolYear == "2024-2025" |
-     SchoolYear == "2023-2024")
-  )
+    AcademicYear == "2024-2025" |
+    AcademicYear == "2025-2026"
+  ) %>%
+  distinct() %>%
+  collect()
 ```
