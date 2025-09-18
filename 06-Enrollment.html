@@ -252,17 +252,17 @@ window.Quarto = {
   <li><a href="#sec-06Goal" id="toc-sec-06Goal" class="nav-link active" data-scroll-target="#sec-06Goal"><span class="header-section-number">6.1</span> Percentage Meeting Enrollment Goal</a>
   <ul class="collapse">
   <li><a href="#notes-exclusions" id="toc-notes-exclusions" class="nav-link" data-scroll-target="#notes-exclusions"><span class="header-section-number">6.1.1</span> Notes &amp; Exclusions</a></li>
-  <li><a href="#source" id="toc-source" class="nav-link" data-scroll-target="#source"><span class="header-section-number">6.1.2</span> Source</a></li>
+  <li><a href="#sec-Enrollsource" id="toc-sec-Enrollsource" class="nav-link" data-scroll-target="#sec-Enrollsource"><span class="header-section-number">6.1.2</span> Source</a></li>
   </ul></li>
-  <li><a href="#sec-06Persist" id="toc-sec-06Persist" class="nav-link" data-scroll-target="#sec-06Persist"><span class="header-section-number">6.2</span> Student Annual Persistence</a>
+  <li><a href="#sec-06Cap" id="toc-sec-06Cap" class="nav-link" data-scroll-target="#sec-06Cap"><span class="header-section-number">6.2</span> Percentage of Schools/Campuses Under 85% Capacity (Model 1501)</a>
   <ul class="collapse">
   <li><a href="#notes-exclusions-1" id="toc-notes-exclusions-1" class="nav-link" data-scroll-target="#notes-exclusions-1"><span class="header-section-number">6.2.1</span> Notes &amp; Exclusions</a></li>
-  <li><a href="#source-1" id="toc-source-1" class="nav-link" data-scroll-target="#source-1"><span class="header-section-number">6.2.2</span> Source</a></li>
+  <li><a href="#source" id="toc-source" class="nav-link" data-scroll-target="#source"><span class="header-section-number">6.2.2</span> Source</a></li>
   </ul></li>
-  <li><a href="#sec-06Cap" id="toc-sec-06Cap" class="nav-link" data-scroll-target="#sec-06Cap"><span class="header-section-number">6.3</span> Percentage of Schools/Campuses Under 85% Capacity (Model 1501)</a>
+  <li><a href="#sec-06Persist" id="toc-sec-06Persist" class="nav-link" data-scroll-target="#sec-06Persist"><span class="header-section-number">6.3</span> Student Annual Persistence</a>
   <ul class="collapse">
   <li><a href="#notes-exclusions-2" id="toc-notes-exclusions-2" class="nav-link" data-scroll-target="#notes-exclusions-2"><span class="header-section-number">6.3.1</span> Notes &amp; Exclusions</a></li>
-  <li><a href="#source-2" id="toc-source-2" class="nav-link" data-scroll-target="#source-2"><span class="header-section-number">6.3.2</span> Source</a></li>
+  <li><a href="#source-1" id="toc-source-1" class="nav-link" data-scroll-target="#source-1"><span class="header-section-number">6.3.2</span> Source</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -337,9 +337,9 @@ window.Quarto = {
 <li>Two IDEA schools, Travis Academy and A. W. Brown Academy, currently have PreK classes and enrollment goals. We have excluded PreK students and enrollment goals from this metric.</li>
 </ul>
 </section>
-<section id="source" class="level3" data-number="6.1.2">
-<h3 data-number="6.1.2" class="anchored" data-anchor-id="source"><span class="header-section-number">6.1.2</span> Source</h3>
-<p>The enrollment metric uses both enrollment targets and attendance data from the data warehouse <span class="citation" data-cites="EnrollTarg24 EnrollTarg25 EnrollData">(<a href="references.html#ref-EnrollTarg24" role="doc-biblioref">IDEA Public Schools 2024</a>, <a href="references.html#ref-EnrollTarg25" role="doc-biblioref">2025</a>; <a href="references.html#ref-EnrollData" role="doc-biblioref">IDEA Public Schools Data Warehouse 2025a</a>)</span>.</p>
+<section id="sec-Enrollsource" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="sec-Enrollsource"><span class="header-section-number">6.1.2</span> Source</h3>
+<p>The enrollment metric uses both enrollment targets and attendance data from the data warehouse <span class="citation" data-cites="EnrollTarg24 EnrollTarg25 EnrollData">(<a href="references.html#ref-EnrollTarg24" role="doc-biblioref">IDEA Public Schools 2024</a>, <a href="references.html#ref-EnrollTarg25" role="doc-biblioref">2025</a>; <a href="references.html#ref-EnrollData" role="doc-biblioref">IDEA Public Schools Data Warehouse 2025</a>)</span>.</p>
 <p>Because the enrollment data includes an data includes an enormous amount of data, one row for every day for each student, it takes a very long time to pull from the warehouse. Therefore, I built a few steps into the code that greatly increases the code length, but greatly decreases the time it takes to pull the data for us.</p>
 <p>First, we pull only a few variables from the enrollment details table for the academic years of interest to help us determine the appropriate First Day of Persistence (FDOP) for each school. FDOP is the 11th day of school, which typically14 calendar days after the First Day of School (FDOS). We use the FDOS to determine FDOP and then use that to create an incredibly long filter we can use to pull enrollment data only for each individual school’s FDOP.</p>
 <div class="cell">
@@ -407,8 +407,92 @@ window.Quarto = {
 <p>Once the appropriate data has been pulled into R, the code sums the total number of students enrolled within each unit on FDOP (<code>Membership == 1</code> , indicating that the student was enrolled as a full-time student on that day) and compares to the enrollment targets for that unit.</p>
 </section>
 </section>
-<section id="sec-06Persist" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="sec-06Persist"><span class="header-section-number">6.2</span> Student Annual Persistence</h2>
+<section id="sec-06Cap" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="sec-06Cap"><span class="header-section-number">6.2</span> Percentage of Schools/Campuses Under 85% Capacity (Model 1501)</h2>
+<p>Capacity metrics estimate the overall current capacity IDEA schools have if their buildings were full. You can think of it as how much IDEA could grow within a certain geographic region without having to build or acquire new buildings; areas which are far under capacity could continue to grow within their current physical spaces.</p>
+<p>Capacity is determined by what we refer to as the Model 1501. Each grade level is assigned a consistent capacity across campuses, summing up to a campus capacity of 1,501 students (hence the title “Model 1501”).</p>
+<table class="caption-top table">
+<caption>Model 1501 Capacity by Grade Level and School Type</caption>
+<colgroup>
+<col style="width: 34%">
+<col style="width: 19%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">School Type</th>
+<th style="text-align: center;">Grade Level</th>
+<th style="text-align: center;">Capacity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Academy</td>
+<td style="text-align: center;">K<br>
+1<br>
+2<br>
+3<br>
+4<br>
+5</td>
+<td style="text-align: center;">116<br>
+116<br>
+116<br>
+116<br>
+116<br>
+116</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Academy Total</strong></td>
+<td style="text-align: center;"><strong>K-5</strong></td>
+<td style="text-align: center;"><strong>696</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">College Prep</td>
+<td style="text-align: center;">6<br>
+7<br>
+8<br>
+9<br>
+10<br>
+11<br>
+12</td>
+<td style="text-align: center;">120<br>
+120<br>
+120<br>
+120<br>
+120<br>
+108<br>
+97</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>College Prep Total</strong></td>
+<td style="text-align: center;"><strong>6-12</strong></td>
+<td style="text-align: center;"><strong>805</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong><em>Campus Total</em></strong></td>
+<td style="text-align: center;"><strong><em>K-12</em></strong></td>
+<td style="text-align: center;"><strong><em>1501</em></strong></td>
+</tr>
+</tbody>
+</table>
+<p>Historically, the model was set at a lower capacity, so you may occasionally hear references to a value of [1411?????].</p>
+<p>The percentage meeting enrollment goal within a unit is based on the number of sub-units, rather than the total number of students and enrollment target. For example, percentage of schools within a region meeting enrollment goal is calculated as:</p>
+<p><span class="math display">\[{\% \text{ Away from Capacity}} = \frac{\# \text{ of Students Enrolled at FDOP} - \text{Capacity for Unit}}{\text{Capacity for Unit}}*100\]</span></p>
+<p>Any school or campus with a % Away from Model 1501 Capacity less than -25% are marked as as “&lt;85% of Capacity”, and percentage of units within region below 85% capacity is calculated as:</p>
+<p><span class="math display">\[{\% \text{ Units} &lt;85\% \text{ Capacity}} = \frac{\# \text{ of Units} &lt;85\% \text{ Capacity}}{\text{Total } \# \text{ of Units within Region}}*100\]</span></p>
+<section id="notes-exclusions-1" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="notes-exclusions-1"><span class="header-section-number">6.2.1</span> Notes &amp; Exclusions</h3>
+<ul>
+<li>Two IDEA schools, Travis Academy and A. W. Brown Academy, currently have PreK classes. We have excluded PreK students from this metric.</li>
+</ul>
+</section>
+<section id="source" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="source"><span class="header-section-number">6.2.2</span> Source</h3>
+<p>The source for percentage below capacity is the same as the source for the enrollment target metric. See <a href="#sec-Enrollsource" class="quarto-xref"><span>Section 6.1.2</span></a>.</p>
+</section>
+</section>
+<section id="sec-06Persist" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="sec-06Persist"><span class="header-section-number">6.3</span> Student Annual Persistence</h2>
 <p>According to the RAP Manual <span class="citation" data-cites="RAPMan">(<a href="references.html#ref-RAPMan" role="doc-biblioref">IDEA RAP Team, n.d.</a>)</span>,</p>
 <blockquote class="blockquote">
 <p>Student Persistence is one of the most important measures that Chiefs, VPs, and School Leaders are always monitoring to understand our efforts in providing high quality services to our students and families. In order for a student to actualize the benefits of IDEA, the student must persist through high school.&nbsp;We say a student persisted if the student was enrolled and attended school for the entire academic school year, returned the following school year, and was enrolled and attending on [the “First Day of Persistence”]. In other words, the student was enrolled and attended school on the “First Day of Persistence” (FDOP) for two consecutive years. The only exception to this are New Students that enroll after the FDOP, attend the entire year, return the following year, and are enrolled and attending for FDOP. These new students were not enrolled and attending for two consecutive FDOPs because they enrolled after the first FDOP but would be considered as persisting.</p>
@@ -426,16 +510,16 @@ window.Quarto = {
 <p><span class="math display">\[
 \text{ } \% \text{ Persistence} = \left(1 - \frac{(\# \text{ Absent FDOP Year 2)} + (\#\text{ Not Enrolled on FDOP Year 2)}}{\# \text{ Present on FDOP Year 1}}\right)*100
 \]</span></p>
-<section id="notes-exclusions-1" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="notes-exclusions-1"><span class="header-section-number">6.2.1</span> Notes &amp; Exclusions</h3>
+<section id="notes-exclusions-2" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="notes-exclusions-2"><span class="header-section-number">6.3.1</span> Notes &amp; Exclusions</h3>
 <ul>
 <li>Across all options for persistence calculations, students enrolled in 12th grade in Year 1 who do not return for Year 2 are excluded from the calculations (from both the numerator and denominator).</li>
 <li>Two IDEA schools, Travis Academy and A. W. Brown Academy, currently have PreK classes and enrollment goals. We have excluded PreK students and enrollment goals from this metric.</li>
 <li>Persistence calculated from the official persistence tables is calculated differently than estimates calculated from attendance data. The later does <em>not</em> account for students who enrolled after FDOP in year 1 (New Entries). Therefore, student persistence calculated from the persistence tables are not directly comparable to student persistence estimated from attendance data.</li>
 </ul>
 </section>
-<section id="source-1" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="source-1"><span class="header-section-number">6.2.2</span> Source</h3>
+<section id="source-1" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="source-1"><span class="header-section-number">6.3.2</span> Source</h3>
 <p>As described above, there are multiple different sources and calculation possibilities for student persistence. Ideally, we would use calculations from the official persistence tables (current or historical), but persistence tables are not always current at the beginning of the school year.</p>
 <p>For the Fall 2025 scorecard, we used estimates from the attendance data. The code does, however, also pull the previous year’s official persistence data and create a tab in the Excel output workbook with the relevant data.</p>
 <p>Like with enrollment data, the attendance data includes a row for each day for each student. We take a similar approach as describe in <a href="#sec-06Goal" class="quarto-xref"><span>Section 6.1</span></a> with creating a long filter to more efficiently pull the data.</p>
@@ -473,38 +557,6 @@ window.Quarto = {
 <span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span></span>
 <span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-</section>
-<section id="sec-06Cap" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="sec-06Cap"><span class="header-section-number">6.3</span> Percentage of Schools/Campuses Under 85% Capacity (Model 1501)</h2>
-<section id="notes-exclusions-2" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="notes-exclusions-2"><span class="header-section-number">6.3.1</span> Notes &amp; Exclusions</h3>
-<ul>
-<li>Two IDEA schools, Travis Academy and A. W. Brown Academy, currently have PreK classes and enrollment goals. We have excluded PreK students and enrollment goals from this metric.</li>
-</ul>
-</section>
-<section id="source-2" class="level3" data-number="6.3.2">
-<h3 data-number="6.3.2" class="anchored" data-anchor-id="source-2"><span class="header-section-number">6.3.2</span> Source</h3>
-<p>The STAAR data includes STAAR and high school level End-of-Course (EOC) assessments stored in IDEA’s data warehouse<span class="citation" data-cites="STAAR">(<a href="references.html#ref-STAAR" role="doc-biblioref">IDEA Public Schools Data Warehouse 2025b</a>)</span>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Connect to Enrollment</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>enrollment_conn1 <span class="ot">&lt;-</span> <span class="fu">get_table</span>(<span class="at">.table_name =</span> <span class="st">"EnrollmentDetails"</span>,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">.schema =</span> <span class="st">"Dashboard"</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">.database_name =</span> <span class="st">"Enrollment"</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">.server_name =</span> <span class="st">"RGVPDSD-DWPRD1"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    SchoolNumber, </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    AcademicYear, </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    FDOS, </span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    Instance</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    AcademicYear <span class="sc">==</span> <span class="st">"2024-2025"</span> <span class="sc">|</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    AcademicYear <span class="sc">==</span> <span class="st">"2025-2026"</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -515,10 +567,7 @@ IDEA Public Schools. 2024. <span>“2024 Enrollment Targets.”</span> <a href="
 ———. 2025. <span>“2025 Enrollment Targets.”</span> <a href="https://ideapublicschoolsorg.sharepoint.com/:x:/s/EnrollmentTeam/ESFRiuKetQVNgRfRsOyAwhgBbGsH09Gjy9H_2l02tyYB4g?e=3Koj1M">https://ideapublicschoolsorg.sharepoint.com/:x:/s/EnrollmentTeam/ESFRiuKetQVNgRfRsOyAwhgBbGsH09Gjy9H_2l02tyYB4g?e=3Koj1M</a>.
 </div>
 <div id="ref-EnrollData" class="csl-entry" role="listitem">
-IDEA Public Schools Data Warehouse. 2025a. <span>“Enrollment.”</span>
-</div>
-<div id="ref-STAAR" class="csl-entry" role="listitem">
-———. 2025b. <span>“STAAR Assessment Data.”</span>
+IDEA Public Schools Data Warehouse. 2025. <span>“Enrollment.”</span>
 </div>
 <div id="ref-RAPMan" class="csl-entry" role="listitem">
 IDEA RAP Team. n.d. <em>IDEA r&amp;a Manual</em>. <a href="https://idea-analytics.github.io/r_and_a_manual/index.html">https://idea-analytics.github.io/r_and_a_manual/index.html</a>.

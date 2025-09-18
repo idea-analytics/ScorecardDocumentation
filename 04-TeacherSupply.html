@@ -286,11 +286,76 @@ window.Quarto = {
 
 <section id="sec-TeachHire" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="sec-TeachHire"><span class="header-section-number">4.1</span> Percent of Teaching Positions Hired by First Day of Instruction</h2>
+<p>At the time of this writing (September 2025), this metric is a bit in flux. Our desire is to have some measure of how many teaching positions were filled versus vacant at the beginning of the employment or school year, to assess difficulties in staffing teaching positions.</p>
+<p>In Fall 2025, we relied on values provided in a slide deck report created by Limla Paul. The metric used was labeled as “% of Staffed Teachers &amp; Co-Teachers as of 9/24/25” with the date the percentage refering to the first day of instruction within each region. She states that the values were computed as:</p>
+<p><span class="math display">\[
+\% \text{ Staffed} = \frac{\text{Headcount} + \text{Filled Vacancies}}{\text{Headcount} + \text{Filled Vacancies} + \text{Remaining Vacancies}}*100
+\]</span></p>
+<p>She also stated that in the future, Chris Thompson recommends instead using the calculation that is currently used in the staffing dashboard that Limla manages:</p>
+<p><span class="math display">\[
+\% \text{ Staffed} = \left(1 - \frac{\# \text{ of Remaining Vacancies}}{\text{Active Count} + \# \text{ of Remaining Vacancies}}\right)*100
+\]</span></p>
+<p>Where Remaining Vacancies refers to the remaining positions with open requisitions, and Active Count refers to current active staff who have begun work. This is the best proxy for percentage of staffed positions, but may miss any positions that have been hired (and therefore not have an active requisition), but where the staff member has not begun work.</p>
 <section id="source" class="level3" data-number="4.1.1">
 <h3 data-number="4.1.1" class="anchored" data-anchor-id="source"><span class="header-section-number">4.1.1</span> Source</h3>
+<p>In Fall 2025, the metric we used was from the from Slide 1 of the September <a href="https://teams.microsoft.com/l/message/19:meeting_YjY1NDZkYTUtYTkwNi00ZTY4LWI5NWYtYmJlY2UxMDczNmFl@thread.v2/1757093022018?context=%7B%22contextType%22%3A%22chat%22%7D">monthly staffing report</a>.</p>
+<p>In the future, IDEA may be moving away from using Jobvite and into different applications for managing job requisitions. If, however, the current dashboard that pulls from Jobvite remains active, the recommended way to retrieve the desired data would be to follow the instructions below, keeping in mind the a few important notes:</p>
+<ul>
+<li><p>To get Teacher positions on the <strong>Instructional/Overall: % Staffed</strong> page, be sure to unselect “Not Teacher Role” from the Teacher Label drop-down menu</p></li>
+<li><p>Be careful using the date selection slider! Changing the dates changes what you are going to see in some sections of the dashboard, but not others.</p></li>
+</ul>
+<p>Instructions</p>
+<ol type="1">
+<li>Access the <a href="https://app.powerbi.com/groups/me/reports/a5d80984-d4e3-411d-b301-900ac1c790ad/ac6eda202eb561291ee5?experience=power-bi">Staffing Dashboard</a></li>
+<li>Navigate to the <strong>Instructional/Overall: % Staffed</strong> page</li>
+<li><strong>Leave the date slider as is!</strong></li>
+<li>Select desired region(s)</li>
+<li>Select desired teacher label(s). Options include:
+<ul>
+<li>SpEd Teacher</li>
+<li>SpEd RISE Teacher</li>
+<li>SpEd Co-Teacher</li>
+<li>Not Teacher Role (UNSELECT THIS!)</li>
+<li>Flex Teacher</li>
+<li>Co-Teacher</li>
+</ul></li>
+<li>Scroll to %<strong>Staffed by Week Start Date</strong> table, and check the row you want.
+<ul>
+<li>WeekStartDate is the Monday of the week.</li>
+</ul></li>
+<li>You can download the data by clicking the “…” button, selecting “Export Data,” and exporting with “Data with current layout.”</li>
+</ol>
+<p>Note that we could select the week of school start for each region using its individual start date week or choose the same across regions. If we decide to choose the same date across regions, I <em>believe</em> we can receive the same percentage results by doing the following:</p>
+<ol type="1">
+<li>Access the <a href="https://app.powerbi.com/groups/me/reports/a5d80984-d4e3-411d-b301-900ac1c790ad/ac6eda202eb561291ee5?experience=power-bi">Staffing Dashboard</a></li>
+<li>Navigate to the <strong>Instructional/Overall: % Staffed</strong> page</li>
+<li>Move the date slider end date to specific desired end date (I believe you can keep the start date as 7/1/2025 or move it without problems, as long as it is before the start of the week of our end date)
+<ul>
+<li>For example, we may want 8/15 across all regions, move the end date to 8/15/2025</li>
+</ul></li>
+<li>Select <em>all</em> desired region(s)</li>
+<li>Select desired teacher label(s). Options include:
+<ul>
+<li>SpEd Teacher</li>
+<li>SpEd RISE Teacher</li>
+<li>SpEd Co-Teacher</li>
+<li>Not Teacher Role (UNSELECT THIS!)</li>
+<li>Flex Teacher</li>
+<li>Co-Teacher</li>
+</ul></li>
+<li>Scroll to <strong>Teachers &amp; Co-Teachers: %Staffed by Region &amp; Location</strong> table, and see the percent staffed for each teacher type and a combination across teacher types selected.
+<ul>
+<li>Note that RGV is split into subregions, so to get the full region, you would need to select only the 3 RGV regions and use the Total row.</li>
+<li>The title for the table remains “Teachers &amp; Co-Teachers” regardless of what role type you select.</li>
+</ul></li>
+<li>You can download the data by clicking the “…” button, selecting “Export Data,” and exporting with “Data with current layout.”</li>
+</ol>
 </section>
 <section id="notes-exclusions" class="level3" data-number="4.1.2">
 <h3 data-number="4.1.2" class="anchored" data-anchor-id="notes-exclusions"><span class="header-section-number">4.1.2</span> Notes &amp; Exclusions</h3>
+<ul>
+<li>Note in Fall 2025, the data for the Rio Grande Valley region (RGV) was only available divided into its three sub-regions (Lower, Upper, and Middle). The percentage provided for the full RGV region is an average across the sub-regions. Although it is not a true (weighted) average, the averaged percentages cover a very small range from 98.43% to 99.52%, so we expect that the weighted average would not differ greatly from the recorded value.</li>
+</ul>
 </section>
 </section>
 <section id="sec-YOYTeach" class="level2" data-number="4.2">
