@@ -2,49 +2,44 @@
 
 ## Percentage of Leaders 3+ years in role {#sec-05Leaders}
 
-### Percentage of executive directors 3+ years in role
+In the Fall 2025 scorecards, these metrics represent the leaders who were in their position at the end of the 2024-2025 school year (May 2025) rather than the start of the the 2025-2026 school year.
 
-### Percentage of principals 3+ years in role
+### Percentage of Executive Directors 3+ Years in Tole
 
-### Percentage of APIs 3+ years in role
+### Percentage of Principals 3+ Years in Role
 
-### Notes & Exclusions
-
-### Source
-
-## API vacancy rate (expected + new) {#sec-05APIVacancy}
+### Percentage of APIs 3+ Years in Role
 
 ### Notes & Exclusions
 
 ### Source
 
-## Number of CAP grads (2-year) {#sec-05CAPGrads}
+## API Vacancy Rate (expected + new) {#sec-05APIVacancy}
 
 ### Notes & Exclusions
 
+-   We did not have access to the relevant data in time to include it in the Fall 2025 scorecards.
+
 ### Source
 
-The STAAR data includes STAAR and high school level End-of-Course (EOC) assessments stored in IDEA's data warehouse[@STAAR].
+## Number of CAP Graduates (2-Year) {#sec-05CAPGrads}
 
-```{r STAAR}
-#| eval: false
-#| include: true
+IDEA launched the Cadre of Aspiring Principals (CAP) program during the 2022-2023 school year, graduating their first cohort in spring 2024.
 
-STAAR <- get_table(.table_name = "STAAR", .database_name = "Dashboard",
-                   .schema = "dbo", .server_name = "RGVPDRA-DASQL") %>%
-  filter(
-    ## Includes STAAR but not STAAR Alt 2 
-      TestVersion == "S", 
-    ## Includes Scored assessments only
-      ScoreCode == "S", 
-    ## Includes Math and English 
-    (SubjectCode == "Math" |
-     SubjectCode == "Reading" |
-     SubjectCode == "Algebra I" |
-     SubjectCode == "English I" |
-     SubjectCode == "English II"),
-    ## Select desired school years
-    (SchoolYear == "2024-2025" |
-     SchoolYear == "2023-2024")
-  )
-```
+> The Cadre of Aspiring Principals (CAP) program empowers regions to build a strong bench of aspiring principals so that every school has a transformational leader year after year. 
+>
+> The CAP program builds the ability of aspiring principals to lead systems and lead leaders at the current school. Since participants choose one track (Leading Systems or Leading Leaders) each year, leaders are encouraged to participate for 2 years if possible. After completing CAP, leaders are prepared to apply their learnings in Successor Principal Academy (SPA) if they will become successor principals or the Rhodes Fellowship if they will become launching principals.  [@CAPHub]
+
+Fall 2025 scorecard data include the total count of all historical CAP graduates.
+
+### Notes & Exclusions
+
+-   Rachel Willcutts, Managing Director of Leader Development, shared some important context surrounding the CAP Graduates data:[@CAPContext]
+
+    -   Many more leaders enroll in the CAP program than graduate from it, for positive reasons. Many who enroll do not complete the full two years, because they are promoted to the Successor Principal Academy or even hired to principal roles prior to finishing.
+
+    -   However, "the fact that most are promoted before finishing 2 years suggests that **the current demand for aspiring principals to fill vacancies at existing schools meets or exceeds the number of aspiring principals in most of our regions**. (The RGV is the one clear exception; in that region, the number of aspiring principals exceeds the number of vacancies.)"
+
+### Source
+
+Records for number of individuals completing 2 years of CAP were provided at the regional level by Rachel Willcutts. She will continue to be our source for this data in future iterations of the scorecard.
