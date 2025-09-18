@@ -18,4 +18,4 @@ Debt Service Coverage Ratio estimates IDEA's ability to cover its total debt obl
 
 ## Percent of Per Pupil Revenue Going to Regional Office Budget {#sec-PerPupil}
 
-At the time of writing, we have not been able to access the data necessary to estimate percent of per pupil revenue going to region office budgets. Conversations are ongoing with members of the finance team to determine how we may be able to add this metric in the future. 
+At the time of writing, we have not been able to access the data necessary to estimate percent of per pupil revenue going to region office budgets. Conversations are ongoing with members of the finance team to determine how we may be able to add this metric in the future.

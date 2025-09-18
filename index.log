@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.15)  18 SEP 2025 14:59
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.18)  18 SEP 2025 15:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **index.tex
 (./index.tex
 LaTeX2e <2025-06-01> patch level 1
-L3 programming layer <2025-08-13>
+L3 programming layer <2025-09-02>
 (c:/Users/hilary.doe/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/scrreprt.cls
 Document Class: scrreprt 2025/09/09 v3.48 KOMA-Script document class (report)
 (c:/Users/hilary.doe/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/scrkbase.sty
@@ -219,7 +219,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 )) (c:/Users/hilary.doe/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 ) (c:/Users/hilary.doe/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math.sty (c:/Users/hilary.doe/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2025-08-13 L3 programming layer (loader) 
+Package: expl3 2025-09-02 L3 programming layer (loader) 
 (c:/Users/hilary.doe/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2025-06-09 L3 backend support: XeTeX
 \g__graphics_track_int=\count293
@@ -1245,10 +1245,10 @@ My plan is to forget the whole thing and hope for the best.
 
  
 Here is how much of TeX's memory you used:
- 24312 strings out of 470396
- 474792 string characters out of 5486836
+ 24312 strings out of 470393
+ 474792 string characters out of 5486757
  1182082 words of memory out of 5000000
- 52354 multiletter control sequences out of 15000+600000
+ 52357 multiletter control sequences out of 15000+600000
  633288 words of font info for 94 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  108i,9n,114p,11227b,663s stack positions out of 10000i,1000n,20000p,200000b,200000s
