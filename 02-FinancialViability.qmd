@@ -2,7 +2,7 @@
 
 ## Source
 
-The financial viability data used for the scorecards are not readily available from the data warehouse. Rather, we receive this data, on request, from the Treasury team.
+The financial viability data used for the scorecards are not readily available from the data warehouse. **We receive this data on request, directly from the Treasury team.**
 
 According to Trevor Brooks,
 
@@ -14,8 +14,8 @@ Days Cash on Hand refers to the number of days that IDEA Texas could continue if
 
 ## Debt Service Coverage Ratio {#sec-DebtRatio}
 
-To be filled in...
+Debt Service Coverage Ratio estimates IDEA's ability to cover its total debt obligations with its current income. A ratio above 1 indicates that their is enough income to fully cover all debt.
 
-## Percent of per pupil revenue going to regional office budget {#sec-PerPupil}
+## Percent of Per Pupil Revenue Going to Regional Office Budget {#sec-PerPupil}
 
-To be filled in...
+At the time of writing, we have not been able to access the data necessary to estimate percent of per pupil revenue going to region office budgets. Conversations are ongoing with members of the finance team to determine how we may be able to add this metric in the future. 

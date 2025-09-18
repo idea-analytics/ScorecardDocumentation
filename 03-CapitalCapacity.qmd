@@ -2,8 +2,10 @@
 
 ## Percentage Debt Coverage Across Entity {#sec-DebtCov}
 
-To be filled in...
+Percentage Debt Coverage is calculated as:
+
+$$\% \text{ Debt Service Coverage Ratio} = \frac{\text{Lease Adjusted Debt Service}}{\text{Unaudited Total Revenue}} $$
 
 ### Source
 
-In Fall 2025, we recieved this metric as an estimate directly from Michael Needham.
+In Fall 2025, this metric was provided as an estimate from Michael Needham and may be available along with the Financial Viability measurements directly from the Treasury team in future iterations. 

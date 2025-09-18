@@ -32,7 +32,7 @@ $${\% \text{ Campuses Meeting Enrollment Goal}} = \frac{\# \text{ of Campuses Me
 
 -   Two IDEA schools, Travis Academy and A. W. Brown Academy, currently have PreK classes and enrollment goals. We have excluded PreK students and enrollment goals from this metric.
 
-### Source
+### Source {#sec-Enrollsource}
 
 The enrollment metric uses both enrollment targets and attendance data from the data warehouse [@EnrollTarg24; @EnrollTarg25; @EnrollData].
 
@@ -117,6 +117,57 @@ enrollment_conn <- get_table(.table_name = "EnrollmentDetails",
 
 Once the appropriate data has been pulled into R, the code sums the total number of students enrolled within each unit on FDOP (`Membership == 1` , indicating that the student was enrolled as a full-time student on that day) and compares to the enrollment targets for that unit.
 
+## Percentage of Schools/Campuses Under 85% Capacity (Model 1501) {#sec-06Cap}
+
+Capacity metrics estimate the overall current capacity IDEA schools have if their buildings were full. You can think of it as how much IDEA could grow within a certain geographic region without having to build or acquire new buildings; areas which are far under capacity could continue to grow within their current physical spaces.
+
+Capacity is determined by what we refer to as the Model 1501. Each grade level is assigned a consistent capacity across campuses, summing up to a campus capacity of 1,501 students (hence the title "Model 1501").
+
++------------------------+--------------+--------------+
+| School Type            | Grade Level  | Capacity     |
++:======================:+:============:+:============:+
+| Academy                | K\           | 116\         |
+|                        | 1\           | 116\         |
+|                        | 2\           | 116\         |
+|                        | 3\           | 116\         |
+|                        | 4\           | 116\         |
+|                        | 5            | 116          |
++------------------------+--------------+--------------+
+| **Academy Total**      | **K-5**      | **696**      |
++------------------------+--------------+--------------+
+| College Prep           | 6\           | 120\         |
+|                        | 7\           | 120\         |
+|                        | 8\           | 120\         |
+|                        | 9\           | 120\         |
+|                        | 10\          | 120\         |
+|                        | 11\          | 108\         |
+|                        | 12           | 97           |
++------------------------+--------------+--------------+
+| **College Prep Total** | **6-12**     | **805**      |
++------------------------+--------------+--------------+
+| ***Campus Total***     | ***K-12***   | ***1501***   |
++------------------------+--------------+--------------+
+
+: Model 1501 Capacity by Grade Level and School Type
+
+Historically, the model was set at a lower capacity, so you may occasionally hear references to a value of \[1411?????\].
+
+The percentage meeting enrollment goal within a unit is based on the number of sub-units, rather than the total number of students and enrollment target. For example, percentage of schools within a region meeting enrollment goal is calculated as:
+
+$${\% \text{ Away from Capacity}} = \frac{\# \text{ of Students Enrolled at FDOP} - \text{Capacity for Unit}}{\text{Capacity for Unit}}*100$$
+
+Any school or campus with a % Away from Model 1501 Capacity less than -25% are marked as as "\<85% of Capacity", and percentage of units within region below 85% capacity is calculated as:
+
+$${\% \text{ Units < 85% Capacity}} = \frac{\# \text{ of Units < 85% Capacity}}{\text{Total } \# \text{ of Units within Region}}*100$$
+
+### Notes & Exclusions
+
+-   Two IDEA schools, Travis Academy and A. W. Brown Academy, currently have PreK classes. We have excluded PreK students from this metric.
+
+### Source
+
+The source for percentage below capacity is the same as the source for the enrollment target metric. See @sec-Enrollsource.
+
 ## Student Annual Persistence {#sec-06Persist}
 
 According to the RAP Manual [@RAPMan],
@@ -194,38 +245,4 @@ attend_fdop <- attend_conn %>%
         ) %>%
   collect()
 
-```
-
-## Percentage of Schools/Campuses Under 85% Capacity (Model 1501) {#sec-06Cap}
-
-### Notes & Exclusions
-
--   Two IDEA schools, Travis Academy and A. W. Brown Academy, currently have PreK classes and enrollment goals. We have excluded PreK students and enrollment goals from this metric.
-
-### Source
-
-The STAAR data includes STAAR and high school level End-of-Course (EOC) assessments stored in IDEA's data warehouse[@STAAR].
-
-```{r capacity}
-#| eval: false
-#| include: true
-
-
-## Connect to Enrollment
-enrollment_conn1 <- get_table(.table_name = "EnrollmentDetails",
-                              .schema = "Dashboard",
-                              .database_name = "Enrollment",
-                              .server_name = "RGVPDSD-DWPRD1") %>%
-  select(
-    SchoolNumber, 
-    AcademicYear, 
-    FDOS, 
-    Instance
-  ) %>%
-  filter(
-    AcademicYear == "2024-2025" |
-    AcademicYear == "2025-2026"
-  ) %>%
-  distinct() %>%
-  collect()
 ```
