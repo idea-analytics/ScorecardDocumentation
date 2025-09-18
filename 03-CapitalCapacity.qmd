@@ -8,4 +8,4 @@ $$\% \text{ Debt Service Coverage Ratio} = \frac{\text{Lease Adjusted Debt Servi
 
 ### Source
 
-In Fall 2025, this metric was provided as an estimate from Michael Needham and may be available along with the Financial Viability measurements directly from the Treasury team in future iterations. 
+In Fall 2025, this metric was provided as an estimate from Michael Needham and may be available along with the Financial Viability measurements directly from the Treasury team in future iterations.

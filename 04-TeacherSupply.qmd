@@ -153,3 +153,4 @@ The following details are taken directly from the 2024-2025 Staff Retention Stan
 >     -   If a New Hire is a no-show on the first day of their work calendar, they should be coded as OT02 – Employee did not start, which will exclude them from the count.o If an employee shows up for the first day of their work calendar and subsequently leaves, they will count toward retention that year.
 >     -   Flex Teachers and Flex Co-Teachers count toward the retention for the Region in which they were hired, unless they have officially transitioned to a permanent campus-based teaching role.
 > -   Flex Teachers and Flex Co-Teachers will not count toward the retention for the home campus at which they are based before they are assigned to a permanent campus-based role.
+
