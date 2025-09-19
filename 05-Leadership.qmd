@@ -2,25 +2,87 @@
 
 ## Percentage of Leaders 3+ years in role {#sec-05Leaders}
 
+These metrics measure how long individuals in specific leadership positions have been in their current role at the time the data is pulled. For example, if the current executive director was held an executive director position for 3 or more years over the course of their career with IDEA (2 years as Executive Director & 1 year as Senior Executive Director), they have been in their role for 3+ years. However, if someone changed between roles, such as spending 2 years as an Assistant Principal of Instruction (API) followed by 1 year as a Principal, they have not been in a role of Principal for 3 or more years.
+
 In the Fall 2025 scorecards, these metrics represent the leaders who were in their position at the end of the 2024-2025 school year (May 2025) rather than the start of the the 2025-2026 school year.
 
-### Percentage of Executive Directors 3+ Years in Tole
+### Percentage of Executive Directors 3+ Years in Role
+
+Executive Directors include positions with variations of the following job title:
+
+-   Executive Director
+-   Senior Executive Director
 
 ### Percentage of Principals 3+ Years in Role
 
+Principals include positions with variations of the following job title:
+
+-   Principal
+-   Executive Principal
+-   Senior Executive Principal
+-   Principal K-8
+
+We previously have not included the following job titles as principals:
+
+-   Rhodes Principal Fellow
+-   Successor Principal Fellow
+-   Principal in Residence
+
 ### Percentage of APIs 3+ Years in Role
+
+Assistant Principal of Instruction (API) positions include positions with variations of the following job title:
+
+-   Assistant Principal of Instruction
+-   Senior Principal of Instruction
+-   Assistant Principal of Instruction-Intervention
+
+We previously have not included the following job titles as principals:
+
+-   Assistant Principal of Instruction in Residence
 
 ### Notes & Exclusions
 
+-   As noted above, we have not included "fellow" or "in residence" positions API, Principal, or Executive Director positions.
+
 ### Source
 
-## API Vacancy Rate (expected + new) {#sec-05APIVacancy}
+The Fall 2025 scorecard includes data pulled at the end fo the 2024-2025 school year. Mishan Jenson "manually" calculated the percentages within an Excel workbook.
+
+For future iterations, Hilary Doe has drafted code to pull relevant data and run calculations within R. This code is in draft form and should be checked carefully prior to use. The code can be found in the [Growth Scorecard GitHub repository](https://github.com/idea-analytics/growth_scorecard) as "/munge/draft_staffing_history.R"
+
+## API Vacancy Rate (Expected + New) {#sec-05APIVacancy}
+
+This metric is intended to measure the percent of Assistant Principal of Instruction (API) positions are vacant at a certain snapshot date (e.g. July, or start of school). We will calculate this metric as:
+
+$$
+\text{ API Vacancy Rate} = \left(1 - \frac{\# \text{ of Filled API Positions}}{\# \text{ of Active API Positions}}\right)*100
+$$
+
+Where Filled Positions refer to positions in which there is currently an active employee working at the time of the snapshot and Active Positions refer to API positions which are either currently filled or hiring.
 
 ### Notes & Exclusions
 
 -   We did not have access to the relevant data in time to include it in the Fall 2025 scorecards.
+-   We will exclude "pending" API positions, which indicate a position is planned for next year.
+-   At any given time, positions that have been hired but in which the employee has not been processed in Tyler Munis will show up as vacant.
+-   As with all data, data are only accurate for the specific time frame indicated. For example, if a principal steps down from their role after the data have been pulled, that principals position will show as filled.
 
 ### Source
+
+We will request the relevant data from Victoria Arreola or another Position Control Analyst. They should be able to provide a selection of data from their "Master Roster" report for the months of interest. These reports are run on the first workday of each month. Selected data will include the following variables for all rows where POSITION DESCRIPTIONS = "ASSISTANT PRINCIPAL OF INSTRUCTION"
+
+| Variable | Description |
+|------------------------------------|------------------------------------|
+| ORG | School ID #; If org is a region (e.g. PERM 999), then it belongs to the region and region will pay for it. |
+| OrgDescription | School/Region Name |
+| POSITION | Position ID |
+| POSITION DESCRIPTION | Position Title |
+| JOB TITLE | Job Title; more generalized than position title |
+| ID | Employee ID #; if blank = vacant |
+| STATUS | Indicates if position is ACTIVE (A) or PENDING (P). PENDING = next school year position |
+| REGION | Location of position |
+
+: Data Dictionary for Anticipated Master Roster Data
 
 ## Number of CAP Graduates (2-Year) {#sec-05CAPGrads}
 
